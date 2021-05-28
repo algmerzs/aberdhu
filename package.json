@@ -1,0 +1,23 @@
+{
+  "name": "aberdhu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algmerzs/aberdhu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/algmerzs/aberdhu/issues"
+  },
+  "homepage": "https://github.com/algmerzs/aberdhu#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
