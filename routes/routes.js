@@ -1,28 +1,17 @@
+const fetch = require("node-fetch");
 const { Router } = require("express");
 const router = Router();
-const news = require("../request.js");
-
-const groups = require("../sample.json");
-// console.log(groups);
-// router.get("/", (req, res) => {});
+const news = require("../request");
 
 router.get("/", (req, res) => {
-  //   res.send(news);
   res.send("esta funcionando");
-  console.log(news);
 });
 
-router.get("/groups", (req, res) => {
-  res.json(groups);
-});
-
-router.post("/groups", (req, res) => {
-  //   console.log(req.body);
-  const newGroup = { ...req.body };
-  //   console.log(newGroup);
-  //   groups.push(newGroup);
-  //   res.json(groups);
-  res.send("received");
+router.get("/coins", async (req, res) => {
+  let fetchResponse = await fetch(news.coins_api_url);
+  let infoInJson = await fetchResponse.json();
+  res.json(infoInJson);
+  // console.log(infoInJson);
 });
 
 module.exports = router;
