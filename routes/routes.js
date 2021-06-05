@@ -1,17 +1,15 @@
-const fetch = require("node-fetch");
 const { Router } = require("express");
 const router = Router();
-const news = require("../request");
+const path = require("path");
 
 router.get("/", (req, res) => {
-  res.send("esta funcionando");
+  res.send("inicio")
 });
 
-router.get("/coins", async (req, res) => {
-  let fetchResponse = await fetch(news.coins_api_url);
-  let infoInJson = await fetchResponse.json();
-  res.json(infoInJson);
-  // console.log(infoInJson);
+router.get("/news", async (req, res) => {
+
+  res.sendFile(path.join(__dirname, '../public/news.html'))
+
 });
 
 module.exports = router;
