@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/algmerzs/aberdhu#readme",
   "dependencies": {
-    "ejs": "^3.1.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsdom": "^16.6.0",
     "morgan": "^1.10.0",
