@@ -3,12 +3,14 @@ const router = Router();
 const path = require("path");
 
 router.get("/", (req, res) => {
-  res.send("inicio")
+
+  res.send("inicio");
+
 });
 
-router.get("/news", async (req, res) => {
+router.get("/news", (req, res) => {
 
-  res.sendFile(path.join(__dirname, '../public/news.html'))
+  res.sendFile(path.join(__dirname, '../public/news.html'));
 
 });
 
