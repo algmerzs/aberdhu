@@ -5,7 +5,6 @@ const getNews = async () => {
     let res = await fetch(url);
     let newsInJson = await res.json();
     let news = await newsInJson.results;
-    // console.log(news);
     
     listNews.innerHTML += news.map(n => `<div> <h3> ${n.title} </h3> <p> ${n.description} </p> <sub> ${n.published_utc} </sub> </div>`).join('');
 }
