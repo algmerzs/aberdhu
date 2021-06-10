@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>NOTICAS</title>
+    <title>NOTICIAS</title>
+    <!-- versión de desarrollo vuejs -->
+    <script defer src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="./news.js"></script>
 </head>
+
 <body>
-    <DIV>PAGIAN DE NOTICIAS</DIV>
 
     <div id="news">
-
+        <div class="new" v-for="n in news" :key="n.id">
+            <h3> {{ n.title }} </h3>
+            <p> {{ n.description }} </p>
+            <sub> {{ n.published_utc }} </sub>
+            <img v-bind:src="n.image_url">
+            <br><br>
+        </div>
     </div>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
-    <script src="./news.js"></script>
 </body>
+
 </html>
