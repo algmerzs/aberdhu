@@ -9,8 +9,8 @@ const listNews = new Vue({
 
         let res = await fetch(url);
         let newsInJson = await res.json();
-        let news = await newsInJson.results;
-        this.news = news;
+        let newsAPI = await newsInJson.results;
+        this.news = newsAPI;
 
     }
 });
