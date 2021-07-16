@@ -26,11 +26,24 @@ dotenv.config({
 
 app.set("view engine", "ejs");
 
-const connection = require("./database/database");
+//const connection = require("./database/database");
 
 app.get("/", (req, res) => {
-    res.render("index");
+    res.render("pages/home");
 });
+
+app.get("/news", (req, res) => {
+    res.render("pages/news");
+});
+
+app.get("/indicators", (req, res) => {
+    res.render("pages/indicators");
+});
+
+app.get("/login", (req, res) => {
+    res.render("pages/login");
+});
+
 
 app.listen(7000, () => {
     console.log("Server running in http://localhost:7000");
