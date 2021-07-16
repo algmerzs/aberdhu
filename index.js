@@ -3,7 +3,6 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const dotenv = require("dotenv");
-const connection = require("./database/database");
 
 // iniciar servidor
 const app = express();
@@ -18,12 +17,19 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use("/resources", express.static("public"));
+app.use("/resources", express.static(__dirname + "/public"))
+
 dotenv.config({
     path: "./env/.env"
-});
+})
+
+app.set("view engine", "ejs");
+
+const connection = require("./database/database");
 
 app.get("/", (req, res) => {
-    res.send("hello");
+    res.render("index");
 });
 
 app.listen(7000, () => {
