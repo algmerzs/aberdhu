@@ -1,35 +1,31 @@
+//inicializaciones
 const express = require("express");
-const mysql = require("mysql");
+const bcrypt = require("bcryptjs");
+const session = require("express-session");
+const dotenv = require("dotenv");
+const connection = require("./database/database");
 
+// iniciar servidor
 const app = express();
-const connection = mysql.createConnection({
-    host: "localhost",
-    database: "aberdhu",
-    user: "root",
-    password: ""
+
+// configuraciones
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.use(session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true
+}));
+
+dotenv.config({
+    path: "./env/.env"
 });
-
-connection.connect((err) => {
-    if (err) {
-        throw err;
-    } else {
-        console.log("Connection to MYSQL sucessful");
-    }
-});
-
-connection.query("SELECT * FROM test", (err, res, fie) => {
-    if (err)
-        throw err;
-
-    res.forEach(r => {
-        console.log(r);
-    });
-})
-
-connection.end();
 
 app.get("/", (req, res) => {
     res.send("hello");
 });
 
-app.listen(7000);
+app.listen(7000, () => {
+    console.log("Server running in http://localhost:7000");
+});
