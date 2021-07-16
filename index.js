@@ -44,6 +44,9 @@ app.get("/login", (req, res) => {
     res.render("pages/login");
 });
 
+app.get("/register", (req, res) => {
+    res.render("pages/register");
+});
 
 app.listen(7000, () => {
     console.log("Server running in http://localhost:7000");
