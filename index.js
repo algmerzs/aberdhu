@@ -1,13 +1,12 @@
-//inicializaciones
+// inicializaciones
 const express = require("express");
-const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const dotenv = require("dotenv");
 
 // iniciar servidor
 const app = express();
 
-// configuraciones
+// configuraciones y middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -17,37 +16,23 @@ app.use(session({
     saveUninitialized: true
 }));
 
+// archivos estáticos
 app.use("/resources", express.static("public"));
 app.use("/resources", express.static(__dirname + "/public"))
 
+// variables de entorno
 dotenv.config({
     path: "./env/.env"
 })
 
+// rutas
+app.use("/", require("./routes/router"));
+app.use("/", require("./routes/register"));
+
+// motor de vistas
 app.set("view engine", "ejs");
 
-//const connection = require("./database/database");
-
-app.get("/", (req, res) => {
-    res.render("pages/home");
-});
-
-app.get("/news", (req, res) => {
-    res.render("pages/news");
-});
-
-app.get("/indicators", (req, res) => {
-    res.render("pages/indicators");
-});
-
-app.get("/login", (req, res) => {
-    res.render("pages/login");
-});
-
-app.get("/register", (req, res) => {
-    res.render("pages/register");
-});
-
+// iniciar escucha servidor
 app.listen(7000, () => {
     console.log("Server running in http://localhost:7000");
 });

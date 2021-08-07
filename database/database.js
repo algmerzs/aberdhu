@@ -1,5 +1,7 @@
+// módulo mysql
 const mysql = require("mysql");
 
+// conectar con BD
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     database: process.env.DB_DATABASE,
@@ -7,6 +9,7 @@ const connection = mysql.createConnection({
     password: process.env.DB_PASSWORD
 });
 
+// verificar conexión BD
 connection.connect((err) => {
     if (err) {
         throw err;
@@ -14,16 +17,5 @@ connection.connect((err) => {
         console.log("Connection to MYSQL sucessful");
     }
 });
-
-connection.query("SELECT * FROM test", (err, res, fie) => {
-    if (err)
-        throw err;
-
-    res.forEach(r => {
-        console.log(r);
-    });
-});
-
-connection.end();
 
 module.exports = connection;
