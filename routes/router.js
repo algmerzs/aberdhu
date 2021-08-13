@@ -24,8 +24,6 @@ router.get("/register", (req, res) => {
 router.get("/profile", (req, res) => {
 
     let user = req.session.user;
-    delete req.session.user;
-
     res.render("pages/profile", { user });
 
 });

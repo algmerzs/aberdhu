@@ -1,7 +1,7 @@
 // archivos necesarios
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcryptjs");
+const crypto = require("../lib/crypto");
 const connection = require("../database/database");
 
 // petición para registrar nuevo usuario
@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
     let passwordConfirm = req.body.passwordConfirm;
 
     // 1. Verificar que no haya ningún otro usuario con el mismo username en la BD
-    connection.query("SELECT * FROM test WHERE nombre = ?", [newUser.username], (err, resu) => {
+    connection.query("SELECT * FROM users WHERE username = ?", [newUser.username], async (err, resu) => {
         if (err)
             console.log(err);
 
@@ -32,8 +32,6 @@ router.post("/register", async (req, res) => {
 
                     req.session.user = newUser;
 
-                    // 5. Encriptar contraseña
-                    // let passwordHash = await bcrypt.hash(password, 8);
                     res.render("pages/register", {
                         alert: true,
                         alertTitle: "Registro",
@@ -44,11 +42,18 @@ router.post("/register", async (req, res) => {
                         reg: true
                     });
 
+                    // 5. Encriptar contraseña
+                    newUser.password = await crypto.encryptPassword(newUser.password);
+
                     // 6. Insertar registro en BD
-                    connection.query("INSERT INTO test SET ?", { nombre: newUser.username }, async (err, resu) => {
+                    connection.query("INSERT INTO users SET ?", [newUser], async (err, resu) => {
                         if (err)
                             console.log(err);
+                        else
+                            console.log(resu);
                     });
+
+
                 } else {
 
                     // Mensaje advertencia(contraseñas no coinciden)
