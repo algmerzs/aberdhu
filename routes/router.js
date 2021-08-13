@@ -21,4 +21,13 @@ router.get("/register", (req, res) => {
     res.render("pages/register");
 });
 
+router.get("/profile", (req, res) => {
+
+    let user = req.session.user;
+    delete req.session.user;
+
+    res.render("pages/profile", { user });
+
+});
+
 module.exports = router;

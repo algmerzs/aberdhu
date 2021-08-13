@@ -11,9 +11,10 @@ router.post("/register", async (req, res) => {
     let newUser = {
         "username": req.body.username,
         "password": req.body.password,
-        "passwordConfirm": req.body.passwordConfirm,
         "email": req.body.email
     }
+
+    let passwordConfirm = req.body.passwordConfirm;
 
     // 1. Verificar que no haya ningún otro usuario con el mismo username en la BD
     connection.query("SELECT * FROM test WHERE nombre = ?", [newUser.username], (err, resu) => {
@@ -22,13 +23,14 @@ router.post("/register", async (req, res) => {
 
         // 2. Si el resultado de la query(BD) es vacío se enviará a consola el mensaje "NUEVO REGISTRO", de otra manera se enviará al usuario la advertencia
         if (resu.length === 0) {
-            console.log("NUEVO REGISTRO");
 
             // 3. Verificar existencia de la contraseña y su confirmación
             if (newUser.username && newUser.password) {
 
                 // 4. Confirmar que coincidan, de otra manera se le advertirá al usuario
-                if (newUser.password === newUser.passwordConfirm) {
+                if (newUser.password === passwordConfirm) {
+
+                    req.session.user = newUser;
 
                     // 5. Encriptar contraseña
                     // let passwordHash = await bcrypt.hash(password, 8);
