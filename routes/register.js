@@ -5,7 +5,7 @@ const crypto = require("../lib/crypto");
 const connection = require("../database/database");
 
 // petición para registrar nuevo usuario
-router.post("/register", async (req, res) => {
+router.post("/register", (req, res) => {
 
     // objeto con la información del usuario
     let newUser = {
@@ -14,6 +14,7 @@ router.post("/register", async (req, res) => {
         "email": req.body.email
     }
 
+    // Confirmación de contraseña
     let passwordConfirm = req.body.passwordConfirm;
 
     // 1. Verificar que no haya ningún otro usuario con el mismo username en la BD
@@ -21,7 +22,7 @@ router.post("/register", async (req, res) => {
         if (err)
             console.log(err);
 
-        // 2. Si el resultado de la query(BD) es vacío se enviará a consola el mensaje "NUEVO REGISTRO", de otra manera se enviará al usuario la advertencia
+        // 2. Si no hay ninguno se procederá 
         if (resu.length === 0) {
 
             // 3. Verificar existencia de la contraseña y su confirmación
@@ -30,8 +31,10 @@ router.post("/register", async (req, res) => {
                 // 4. Confirmar que coincidan, de otra manera se le advertirá al usuario
                 if (newUser.password === passwordConfirm) {
 
+                    // 5. Crear sesión (cookie)
                     req.session.user = newUser;
 
+                    // 6. Alerta
                     res.render("pages/register", {
                         alert: true,
                         alertTitle: "Registro",
@@ -42,17 +45,14 @@ router.post("/register", async (req, res) => {
                         reg: true
                     });
 
-                    // 5. Encriptar contraseña
+                    // 7. Encriptar contraseña
                     newUser.password = await crypto.encryptPassword(newUser.password);
 
-                    // 6. Insertar registro en BD
+                    // 8. Insertar registro en BD
                     connection.query("INSERT INTO users SET ?", [newUser], async (err, resu) => {
                         if (err)
                             console.log(err);
-                        else
-                            console.log(resu);
                     });
-
 
                 } else {
 
