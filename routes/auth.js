@@ -4,11 +4,12 @@ const connection = require("../database/database");
 const crypto = require("../lib/crypto");
 const router = express.Router();
 
-router.post("/auth", async (req, res) => {
+router.post("/auth", (req, res) => {
 
     let userLog = {
         "username": req.body.username,
-        "password": req.body.password
+        "password": req.body.password,
+        "email": ""
     }
 
     connection.query("SELECT * FROM users WHERE username = ?", [userLog.username], async (err, resu) => {
@@ -18,10 +19,43 @@ router.post("/auth", async (req, res) => {
         if (resu.length > 0) {
             const validPassword = await crypto.matchPassword(userLog.password, resu[0].password);
             if (validPassword) {
-                console.log("Contraseñas coinciden!")
+
+                // 5. Crear sesión (cookie)
+                userLog.email = resu[0].email;
+                req.session.user = userLog;
+
+                // 6. Alerta
+                res.render("pages/login", {
+                    alert: true,
+                    alertTitle: "Login",
+                    alertMessage: "Login exitoso",
+                    alertIcon: "success",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    reg: true
+                });
+
             } else {
-                console.log("contraseñas *NO* coinciden")
+                res.render("pages/login", {
+                    alert: true,
+                    alertTitle: "Login",
+                    alertMessage: "Contraseñas no coinciden",
+                    alertIcon: "warning",
+                    showConfirmButton: true,
+                    timer: false,
+                    reg: false
+                });
             }
+        } else {
+            res.render("pages/register", {
+                alert: true,
+                alertTitle: "Login",
+                alertMessage: "No existe el usuario",
+                alertIcon: "error",
+                showConfirmButton: true,
+                timer: false,
+                reg: false
+            });
         }
     });
 

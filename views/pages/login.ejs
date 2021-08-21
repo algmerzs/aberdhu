@@ -8,6 +8,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script defer src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script defer src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" href="./resources/css/stylelogin.css">
     <title>Inicar sesión</title>
 </head>
@@ -33,5 +34,24 @@
       
       </div>
     </div>
+
+    <% if(typeof alert != "undefined" ) { %>
+      <script>
+        Swal.fire({
+          icon: '<%= alertIcon %>',
+          title: '<%= alertTitle %>',
+          text: '<%= alertMessage %>',
+          showConfirmButton: <%= showConfirmButton %>,
+          timer: <%= timer %>
+        });
+        <% if(reg){ %>
+          setTimeout( () => {
+            window.location = "/";
+          }, 1500);
+        <% } %>
+        
+      </script>
+    <% } %>
+
 </body>
 </html>
