@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/head'); %>
+    <script defer src="./resources/js/getIndicators.js"></script>
+    <title>Indicadores</title>
+</head>
+<body>
+    
+    <h1>Indicadores</h1>
+
+    <table id="indicators">
+        <thead>
+            <tr>
+                <td>icono</td>
+                <td>nombre</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="i in indi"> 
+                <td> <img v-bind:src="i.image" width="40px" alt=""> </td>
+                <td> {{ i.id }}  </td> 
+            </tr>
+
+            
+        </tbody>
+    </table>
+
+</body>
+</html>
