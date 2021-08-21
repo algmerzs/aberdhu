@@ -7,23 +7,42 @@
 </head>
 <body>
     
+<!-- Búsqueda de criptomonedas  -->
+<!-- Reactividad -->
     <h1>Indicadores</h1>
+    
 
-    <table id="indicators">
+    <table class="table table-dark mt-4 table-hover" id="indicators">
+
         <thead>
+
             <tr>
-                <td>icono</td>
                 <td>nombre</td>
+                <td>precio</td>
+                <td>cambio precio</td>
+                <td>24h Volume</td>
             </tr>
+
         </thead>
         <tbody>
-            <tr v-for="i in indi"> 
-                <td> <img v-bind:src="i.image" width="40px" alt=""> </td>
-                <td> {{ i.id }}  </td> 
-            </tr>
 
+            <tr v-for="i in indi" :key="i.id">
+
+                <td> 
+                    <img v-bind:src="i.image" width="3%" alt="i.name" class="img-fluid me-4"> 
+                    <span> {{ i.name }} </span>
+                    <span class="ms-3 text-muted text-uppercase"> {{ i.symbol }}  </span>
+                </td>
+                <td> ${{ i.current_price }} </td>
+                <td v-bind:class="[i.price_change_percentage_24h > 0 ? 'text-success' : 'text-danger']" >  
+                    ${{ i.price_change_percentage_24h }} 
+                </td>
+                <td> ${{ i.total_volume }} </td>
+
+            </tr>
             
         </tbody>
+
     </table>
 
 </body>

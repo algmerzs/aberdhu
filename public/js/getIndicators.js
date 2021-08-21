@@ -11,9 +11,17 @@ const listIndi = new Vue({
     data: {
         indi: []
     },
-    async created() {
-        let res = await fetch(baseUrl);
-        let indiInJson = await res.json();
-        this.indi = indiInJson;
+    mounted() {
+        setTimeout(async () => {
+            let res = await fetch(baseUrl);
+            let indiInJson = await res.json();
+            this.indi = indiInJson;
+        }, 5000);
+
     },
+    created() {
+        setTimeout(() => {
+            console.log("ya se creó")
+        }, 5000);
+    }
 });
