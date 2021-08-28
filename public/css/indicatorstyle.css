@@ -1,0 +1,12 @@
+.title-box-indicators{
+    width: 80%;
+    color: #fff;
+    position: absolute;
+    top: 85%;
+    left: 45%;
+    transform: translate(-50%,-50%);
+    text-align: left;
+}
+.title-box-indicators h4{
+    font-size: 62px;
+}

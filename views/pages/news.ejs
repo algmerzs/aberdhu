@@ -3,6 +3,7 @@
   <head>
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/resources/css/newstyle.css">
+    <link rel="stylesheet" href="/resources/css/stylenavbar.css">
     <script defer src="/resources/js/getNews.js"></script>
     <title>Noticias</title>
   </head>
@@ -13,98 +14,51 @@
         <h4>Noticias</h4>
       </div>
     </section>
-    <section class="banner news">
-      <div class="banner-main-content">
-        <h2>Obtenga las últimas noticias financieras</h2>
-        <h3>Página de noticias</h3>
-        <div class="current-news-head"  v-for="n in news" :key="n.id" >
-              <a v-bind:href="n.article_url">
-                <h3>
-                  {{ n.title }} <span> {{n.publisher.name}} </span>
-                </h3>
-              </a>
-        </div>
-      </div>
-      <div class="banner-sub-content" >
-        <div class="hot-topic"  v-for="n in news" :key="n.id">
-          <img v-bind:src="n.image_url" alt="" />
-          <div class="hot-topic-content">
-            <h2>
-              {{n.title}}
-            </h2>
-            <h3>Nuevo Tema</h3>
-            <p>
-              {{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...
-            </p>
+      <section class="banner" id="news">
+        <div class="banner-main-content">
+          <h2>Obtenga las últimas noticias financieras</h2>
+          <h3>Página de noticias de los tickers</h3>
+          <div class="current-news-head"  v-for="n in news" :key="n.id" >
+                <a v-bind:href="n.article_url" target="_blank">
+                  <h3>
+                    {{ n.title }} <span> {{n.publisher.name}} </span>
+                  </h3>
+                </a>
           </div>
         </div>
-      </div>
-    </section>
-    <main class="news">
-      <section class="main-container-right">
-        <h2>Latest Stories</h2>
-        <article>
-          <h4>just in</h4>
-          <div>
-            <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
-              itaque?
-            </p>
-            <a href="#">Read More <span>>></span></a>
+        <div class="banner-sub-content" >
+          <div class="hot-topic"  v-for="n in news" :key="n.id">
+            <img v-bind:src="n.image_url" alt="" />
+            <div class="hot-topic-content">
+              <h2>
+                {{n.title}}
+              </h2>
+              <h3>Nuevo Tema</h3>
+              <p>
+                {{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...
+              </p>
+              <a v-bind:href="n.article_url">Leer más</a>
+            </div>
           </div>
-          <img src="/resources/img/slide1.jpg" alt="" />
-        </article>
-        <article>
-          <h4>just in</h4>
-          <div>
-            <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
-              itaque?
-            </p>
-            <a href="#">Read More <span>>></span></a>
-          </div>
-          <img src="/resources/img/slide1.jpg" alt="" />
-        </article>
-        <article>
-          <h4>just in</h4>
-          <div>
-            <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
-              itaque?
-            </p>
-            <a href="#">Read More <span>>></span></a>
-          </div>
-          <img src="/resources/img/slide1.jpg" alt="" />
-        </article>
-        <article>
-          <h4>just in</h4>
-          <div>
-            <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
-              itaque?
-            </p>
-            <a href="#">Read More <span>>></span></a>
-          </div>
-          <img src="/resources/img/slide1.jpg" alt="" />
-        </article>
-        <article>
-          <h4>just in</h4>
-          <div>
-            <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
-              itaque?
-            </p>
-            <a href="#">Read More <span>>></span></a>
-          </div>
-          <img src="/resources/img/slide1.jpg" alt="" />
-        </article>
+        </div>
       </section>
-    </main>
+      <main id="news2">
+        <section class="main-container-right">
+          <h2>Últimas historias</h2>
+          <article v-for="n in news" :key="n.id">
+            <h4> {{ n.tickers[0]}} </h4>
+            <div>
+              <h2>{{n.title}}</h2>
+              <p>
+                {{ n.description.length > 30 ? n.description.substr(0,35) : n.description }}...
+              </p>
+              <a v-bind:href="n.article_url" target="_blank">Read More <span>>></span></a>
+            </div>
+            <img v-bind:src="n.image_url" alt="" />
+          </article>
+        </section>
+      </main>
+    
     <footer><%- include('../partials/footer'); %></footer>
     <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
