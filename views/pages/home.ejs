@@ -1,80 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="es">
+  <head>
     <%- include('../partials/head'); %>
-</head>
-<body>
-<section>
-  <%- include('../partials/header'); %>
-</section>
-<section class="course">
-  <h1>You can find</h1>
-  <p></p>
-
-    <div class="row">
-      <div class="course-col">
-        <h3>News</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit doloribus facilis error nisi ea dolorum recusandae beatae alias expedita. Odit.</p>
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/stylenavbar.css">
+    <title>Inicio</title>
+  </head>
+  <body>
+    <section>
+      <%- include('../partials/header'); %>
+      <div class="text-box">
+        <h1>Bienvenido a Aberdhu</h1>
+        <p>Somos una página de noticias financieras e indicadores económicos, nuestros servicios serán de gran ayuda a quienes deseen adentrarse superficialmente al mundo económico y financiero </p>
+        <a href="/login" class="hero-btn">Inicia sesión</a>
+        
+        <a href="/signup" class="hero-btn">Registrate</a>
       </div>
-      <div class="course-col">
-        <h3>Indicators</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit doloribus facilis error nisi ea dolorum recusandae beatae alias expedita. Odit.</p>
+    </section>
+    <section class="course">
+      <h1>Podrás encontrar</h1>
+      <p></p>
+      <div class="row">
+        <div class="course-col">
+          <h3 class="items"><i class="far fa-newspaper"></i>Noticias</h3>
+          <p class="text-items">
+            Aquí podrás encontrar las últimas novedades del sector financiero con información sobre tickers.
+          </p>
+        </div>
+        <div class="course-col">
+          <h3 class="items"><i class="fas fa-chart-line"></i>Indicadores</h3>
+          <p class="text-items">
+            En Aberdhu encontrarás información importante sobre una gran variedad de criptomonedas cruciales actualmente.
+          </p>
+        </div>
+        <div class="course-col">
+          <h3 class="items"><i class="far fa-envelope"></i>Alertas</h3>
+          <p class="text-items">
+            Puedes registrarte en Aberdhu para recibir correos ocasionales sobre las últimas actualizaciones que te interesen (solo enviaremos esto a quienes se registren).
+          </p>
+        </div>
       </div>
-      <div class="course-col">
-        <h3>News</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit doloribus facilis error nisi ea dolorum recusandae beatae alias expedita. Odit.</p>
+    </section>
+    <section class="facilities">
+      <h1 class="news-main-title">Latest News</h1>
+      <p class="description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+        aliquam necessitatibus inventore, fugit ratione obcaecati!
+      </p>
+      <div class="container">
+        <article class="card">
+          <header class="card__thumb">
+            <a href="#"><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"/></a>
+          </header>
+          <date class="card__date">
+            <span class="card__date__day">11</span>
+            <br />
+            <span class="card__date__month">Jan</span>
+          </date>
+          <div class="card__body">
+            <div class="card__category"><a href="#">pet</a></div>
+            <h2 class="card__title">
+              <a href="#">an ice cream sundae party！</a>
+            </h2>
+            <div class="card__subtitle">an ice cream sundae party！</div>
+            <p class="card__description">
+              5. Pour the mixture into a non-stick container and then freeze
+              overnight. Take treating your dog a step further by turning it
+              into an ice cream sundae party!
+            </p>
+          </div>
+          <footer class="card__footer">
+            <span class="icon ion-clock"></span> 10 mins ago
+            <span class="icon ion-chatbox"></span><a href="#"> 145 comments</a>
+          </footer>
+        </article>
+        <article class="card">
+          <header class="card__thumb">
+            <a href="#"
+              ><img
+                src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"/></a>
+          </header>
+          <date class="card__date">
+            <span class="card__date__day">11</span>
+            <br />
+            <span class="card__date__month">Jan</span>
+          </date>
+          <div class="card__body">
+            <div class="card__category"><a href="#">pet</a></div>
+            <h2 class="card__title">
+              <a href="#">an ice cream sundae party！</a>
+            </h2>
+            <div class="card__subtitle">an ice cream sundae party！</div>
+            <p class="card__description">
+              5. Pour the mixture into a non-stick container and then freeze
+              overnight. Take treating your dog a step further by turning it
+              into an ice cream sundae party!
+            </p>
+          </div>
+          <footer class="card__footer">
+            <span class="icon ion-clock"></span> 10 mins ago
+            <span class="icon ion-chatbox"></span><a href="#"> 145 comments</a>
+          </footer>
+        </article>
+        <article class="card">
+          <header class="card__thumb">
+            <a href="#"
+              ><img
+                src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+            /></a>
+          </header>
+          <date class="card__date">
+            <span class="card__date__day">11</span>
+            <br />
+            <span class="card__date__month">Jan</span>
+          </date>
+          <div class="card__body">
+            <div class="card__category"><a href="#">pet</a></div>
+            <h2 class="card__title">
+              <a href="#">an ice cream sundae party！</a>
+            </h2>
+            <div class="card__subtitle">an ice cream sundae party！</div>
+            <p class="card__description">
+              5. Pour the mixture into a non-stick container and then freeze
+              overnight. Take treating your dog a step further by turning it
+              into an ice cream sundae party!
+            </p>
+          </div>
+          <footer class="card__footer">
+            <span class="icon ion-clock"></span> 10 mins ago
+            <span class="icon ion-chatbox"></span><a href="#"> 145 comments</a>
+          </footer>
+        </article>
       </div>
-    </div>
-</section>
-<section class="facilities">
-  <h1 class="news-main-title">Latest News</h1>
-  <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur aliquam necessitatibus inventore, fugit ratione obcaecati!</p>
-  <div class="container">
-    <main class="grid">
-      <article>
-        <img src="https://picsum.photos/600/400?image=1083" alt="Sample photo" class="news-img">
-        <div class="text">
-          <h3 class="title-news">Seamlessly visualize quality</h3>
-          <p class="text-news">Collaboratively administrate empowered markets via plug-and-play networks.</p>
-          <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">Here's why</a>
-        </div>
-      </article>
-      <article>
-        <img src="https://picsum.photos/600/400?image=1063" alt="Sample photo" class="news-img">
-        <div class="text">
-          <h3 class="title-news">Completely Synergize</h3>
-          <p class="text-news">Dramatically engage seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing.</p>
-          <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">Here's how</a>
-        </div>
-      </article>
-      <article>
-        <img src="https://picsum.photos/600/400?image=1056" alt="Sample photo" class="news-img">
-        <div class="text">
-          <h3 class="title-news">Dynamically Procrastinate</h3>
-          <p class="text-news">Completely synergize resource taxing relationships via premier niche markets.</p>
-          <a href="https://codepen.io/collection/XdWJOQ/" class="btn btn-primary btn-block">Read more</a>
-        </div>
-      </article>
-    </main>
-  </div>
-</section>
-<section>
-  <h1>Indicators</h1>
-  <p>The last indicators</p>
-</section>
-<section class="cta">
-  <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore voluptate necessitatibus velit dolorem consequatur deleniti?</h1>
-  <a href="/register" class="hero-btn-register">Register</a>
-</section>
-<footer>
-    <%- include('../partials/footer'); %>
-</footer>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/resources/js/main.js"></script>
-</body>
+    </section>
+    <section>
+      <h1>Indicators</h1>
+      <p class="text-indicators">The last indicators</p>
+    </section>
+    <section class="cta">
+      <h1>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
+        voluptate necessitatibus velit dolorem consequatur deleniti?
+      </h1>
+      <a href="/register" class="hero-btn-register">Register</a>
+    </section>
+    <footer><%- include('../partials/footer'); %></footer>
+    <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
 </html>
