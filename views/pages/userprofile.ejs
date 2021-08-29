@@ -5,29 +5,21 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/userstyle.css">
-    <link rel="stylesheet" href="/resources/css/navuser.css">
+    <link rel="stylesheet" href="/resources/css/stylenavbar.css">
     <title>Perfil</title>
   </head>
   <body>
-    <%- include('../partials/header'); %>
       <div class="main-content">
-        <!-- Top navbar -->
-        <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-          <div class="container-fluid">
-            <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" target="_blank">Perfil</a>
-
-          </div>
-        </nav>
+        <%- include('../partials/header'); %>
         <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px;">
           <span class="mask bg-gradient-default opacity-8"></span>
           <div class="container-fluid d-flex align-items-center">
             <div class="row">
-              <div class="col-lg-7 col-md-10">
-                <h1 class="display-2 text-white">Hola</h1>
-                <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-                <a href="#!" class="btn btn-info">Editar Perfil</a>
-                <a href="#!" class="btn btn-info">Eliminar Perfil</a>
+              <div class="col-lg-16 col-md-10">
+                <h1 class="display-2 text-white">Hola, <%= user.username %></h1>
+                <p class="text-white mt-0 mb-5">Bienvenido a tu perfil</p>
+                <button class="btn btn-info">Editar Perfil</button>
+                <button class="btn btn-danger">Eliminar Perfil</button>
               </div>
             </div>
           </div>
@@ -59,7 +51,7 @@
                   </div>
                   <div class="text-center">
                     <h3>
-                      Jessica Jones<span class="font-weight-light"></span>
+                      Sr/Sra <%= user.username %> <span class="font-weight-light"></span>
                     </h3>
                     <hr class="my-4">
                   </div>
@@ -85,13 +77,13 @@
                         <div class="col-lg-6">
                           <div class="form-group focused">
                             <label class="form-control-label" for="input-username">Usuario</label>
-                            <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Usuario" value="lucky.jesse">
+                            <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Usuario" value="<%=user.username%>">
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="form-group">
                             <label class="form-control-label" for="input-email">Correo Electronico</label>
-                            <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="user@example.com">
+                            <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="user@example.com" value="<%=user.email%>">
                           </div>
                         </div>
                       </div>
@@ -99,7 +91,7 @@
                         <div class="col-lg-6">
                           <div class="form-group focused">
                             <label class="form-control-label" for="input-first-name">Contraseña</label>
-                            <input type="password" id="input" class="form-control form-control-alternative" placeholder="Ingrese su contraseña">
+                            <input type="password" id="input" class="form-control form-control-alternative" placeholder="Ingrese su contraseña" value="<%=user.password%>">
                           </div>
                         </div>
                       </div>

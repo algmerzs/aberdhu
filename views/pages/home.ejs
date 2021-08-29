@@ -9,8 +9,9 @@
   <body>
     <section>
       <%- include('../partials/header'); %>
+
       <div class="text-box">
-        <h1>Bienvenido a Aberdhu</h1>
+        <h1>Bienvenido a Aberdhu <% if(user) %>  </h1>
         <p>Somos una página de noticias financieras e indicadores económicos, nuestros servicios serán de gran ayuda a quienes deseen adentrarse superficialmente al mundo económico y financiero </p>
         <a href="/login" class="hero-btn">Inicia sesión</a>
         

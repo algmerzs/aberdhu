@@ -1,18 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.render("pages/home");
-});
-
-router.get("/news", (req, res) => {
-    res.render("pages/news");
-});
-
-router.get("/indicators", (req, res) => {
-    res.render("pages/indicators");
-});
-
+// verificaciones
 router.get("/login", (req, res) => {
     res.render("pages/login");
 });
@@ -21,10 +10,28 @@ router.get("/register", (req, res) => {
     res.render("pages/register");
 });
 
+
+// páginas
+router.get("/", (req, res) => {
+
+    let user = req.session.user;
+    res.render("pages/home", { user });
+});
+
+router.get("/news", (req, res) => {
+    let user = req.session.user;
+    res.render("pages/news", { user });
+});
+
+router.get("/indicators", (req, res) => {
+    let user = req.session.user;
+    res.render("pages/indicators", { user });
+});
+
 router.get("/profile", (req, res) => {
 
     let user = req.session.user;
-    res.render("pages/profile", { user });
+    res.render("pages/userprofile", { user });
 
 });
 
