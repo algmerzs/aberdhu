@@ -18,12 +18,11 @@
   }
   .text-box p{
     margin: 10px 0 40px;
-    font-size: 14px;
+    font-size: 18px;
     color: #fff;
   }
   .hero-btn{
     display: inline-block;
-    text-decoration: none;
     color: #fff;
     border: 1px solid #fff;
     padding: 12px 34px;
@@ -33,11 +32,12 @@
     cursor: pointer;
   }
   .hero-btn:hover{
-    border: 1px solid rgb(61, 41, 116);
     background: rgb(61, 41, 116);
     transition: 1s;
   }
-  
+  .hero-btn a{
+    text-decoration: none;
+  }
 .course{
     width: 80%;
     margin: auto;
