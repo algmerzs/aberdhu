@@ -1,12 +1,18 @@
-const url = "https://api.polygon.io/v2/reference/news?apiKey=KjushOl8xFajibrTsdzJkU8SGYlb13OE";
-const listNews = document.querySelector('#news');
+const newsList = new Vue({
+    el: '.news',
+    data: {
+        news: []
+    },
+    async mounted() {
+        
+        let res = await fetch(`https://api.polygon.io/v2/reference/news?${"limit=4"}&apiKey=dDrG9Sy4A8u30T0WffgfzqJfEl70Vbfo`)
 
-const getNews = async () => {
-    let res = await fetch(url);
-    let newsInJson = await res.json();
-    let news = await newsInJson.results;
-    
-    listNews.innerHTML += news.map(n => `<div> <h3> ${n.title} </h3> <p> ${n.description} </p> <img src="${n.image_url}"> <sub> ${n.published_utc} </sub> </div>`).join('');
-}
+        let newsInJson = await res.json();
+        let news = await newsInJson.results;
+        this.news = news;
+    }
+});
 
-getNews();
+//
+
+
