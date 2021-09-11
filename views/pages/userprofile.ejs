@@ -18,8 +18,6 @@
               <div class="col-lg-16 col-md-10">
                 <h1 class="display-2 text-white">Hola, <%= user.username %></h1>
                 <p class="text-white mt-0 mb-5">Bienvenido a tu perfil</p>
-                <button class="btn btn-info">Editar Perfil</button>
-                <button class="btn btn-danger">Eliminar Perfil</button>
               </div>
             </div>
           </div>
@@ -70,7 +68,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form action="/update" method="POST">
                     <h6 class="heading-small text-muted mb-4">Información Personal</h6>
                     <div class="pl-lg-4">
                       <div class="row">
@@ -96,6 +94,10 @@
                         </div>
                       </div>
                     </div>
+                    <input type="submit" value="Editar Perfil" class="btn btn-info">
+                    <form action="/delete" method="POST">
+                      <input onclick="alert('ALERTA, eliminarás la cuenta para siempre, ¿estás seguro?')" type="submit" class="btn btn-danger" value="Eliminar Perfil" >
+                    </form>
                     <hr class="my-4">
                   </form>
                 </div>
