@@ -37,27 +37,38 @@
               <p>
                 {{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...
               </p>
-              <a v-bind:href="n.article_url">Leer más</a>
+              <a v-bind:href="n.article_url" target="_blank">Leer más</a>
             </div>
           </div>
         </div>
       </section>
-      <main id="news2">
-        <section class="main-container-right">
-          <h2>Últimas historias</h2>
-          <article v-for="n in news" :key="n.id">
-            <h4> {{ n.tickers[0]}} </h4>
-            <div>
-              <h2>{{n.title}}</h2>
-              <p>
-                {{ n.description.length > 30 ? n.description.substr(0,35) : n.description }}...
-              </p>
-              <a v-bind:href="n.article_url" target="_blank">Read More <span>>></span></a>
-            </div>
-            <img v-bind:src="n.image_url" alt="" />
-          </article>
-        </section>
-      </main>
+      <section class="main-container-right" id="news2">
+        <h2>Últimas historias</h2>
+        <article v-for="n in displayedNews" :key="n.id">
+          <h4> {{ n.tickers[0]}} </h4>
+          <div>
+            <h2>{{n.title}}</h2>
+            <a v-bind:href="n.article_url" target="_blank">Read More <span>>></span></a>
+          </div>
+          <img v-bind:src="n.image_url" alt="" />
+        </article>
+        <div class="btn-group col-md-2 offset-md-5">
+          <button 
+          v-if="page != 1"
+          @click="page--"
+          class="btn btn-sm btn-outline-secondary"><<</button>
+          <button 
+          type="button"
+          @click="page = pageN"
+          v-for="pageN in pages.slice(page - 1, page+5)"
+          :key="pageN"
+          class="btn btn-sm btn-outline-secondary">{{pageN}}</button>
+          <button 
+          v-if="page < pages.length"
+          @click="page++"
+          class="btn btn-sm btn-outline-secondary">>></button>
+      </div>
+      </section>
     
     <footer><%- include('../partials/footer'); %></footer>
     <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
