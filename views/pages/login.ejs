@@ -8,6 +8,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script defer src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script defer src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" href="./resources/css/stylelogin.css">
     <title>Inicar sesión</title>
 </head>
@@ -21,8 +22,8 @@
     
         <!-- Login Form -->
         <form action="/auth" method="POST">
-          <input type="text" id="username" class="fadeIn second" name="login" placeholder="Ingresa tu usuario">
-          <input type="password" id="password" class="fadeIn third" name="login" placeholder="Ingresa tu contraseña">
+          <input type="text" REQUIRED id="username" class="fadeIn second" name="username" placeholder="Ingresa tu usuario">
+          <input type="password" REQUIRED id="password" class="fadeIn third" name="password" placeholder="Ingresa tu contraseña">
           <input type="submit" class="fadeIn fourth" value="Ingresa">
         </form>
     
@@ -33,5 +34,24 @@
       
       </div>
     </div>
+
+    <% if(typeof alert != "undefined" ) { %>
+      <script>
+        Swal.fire({
+          icon: '<%= alertIcon %>',
+          title: '<%= alertTitle %>',
+          text: '<%= alertMessage %>',
+          showConfirmButton: <%= showConfirmButton %>,
+          timer: <%= timer %>
+        });
+        <% if(reg){ %>
+          setTimeout( () => {
+            window.location = "/";
+          }, 1500);
+        <% } %>
+        
+      </script>
+    <% } %>
+
 </body>
 </html>
