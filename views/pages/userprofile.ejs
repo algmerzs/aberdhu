@@ -99,10 +99,8 @@
                         <input type="button" name="showPass" id="showPass" value="Mostrar">
                       </div>                
                     </div>
-                    <input type="submit" value="Editar Perfil" class="btn btn-info">
-                    <form action="/delete" method="POST">
-                      <input onclick="alert('ALERTA, eliminarás la cuenta para siempre, ¿estás seguro?')" type="submit" class="btn btn-danger" value="Eliminar Perfil" >
-                    </form>
+                    <!-- <a href="/edit/:username" class="btn btn-outline-info">Editar usuario</a> -->
+                    <a href="/delete/<%=user.username%>" class="btn btn-outline-danger">Eliminar usuario</a>
                     <hr class="my-4">
                   </form>
                 </div>

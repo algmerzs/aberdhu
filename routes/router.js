@@ -1,4 +1,5 @@
 const express = require("express");
+const connection = require("../database/database");
 const router = express.Router();
 
 // verificaciones
@@ -34,5 +35,18 @@ router.get("/profile", (req, res) => {
     res.render("pages/userprofile", { user });
 
 });
+
+// editar y eliminar usuario
+
+router.get("/delete/:username", async (req, res) => {
+    const { username } = req.params;
+    await connection.query("DELETE FROM users WHERE username = ?", [username], (err, resu) => {
+        if (err) {
+            throw err;
+        }
+    });
+    await delete req.session.user;
+    res.redirect("/");
+})
 
 module.exports = router;
