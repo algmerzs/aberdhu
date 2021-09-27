@@ -47,6 +47,38 @@ router.get("/delete/:username", async (req, res) => {
     });
     await delete req.session.user;
     res.redirect("/");
-})
+});
+
+router.get("/logout", async (req, res) => {
+
+    await delete req.session.user;
+    res.redirect("/");
+
+});
+
+router.post("/update", async (req, res) => {
+
+
+    console.log(req.body.id);
+    console.log(req.body.username);
+
+    // let userUpdate = {
+    //     "id": req.body.id,
+    //     "username": req.body.username,
+    //     "email": req.body.email,
+    //     "password": req.body.password
+    // }
+
+    // console.log(userUpdate.id);
+
+    // await connection.query("UPDATE users SET ? WHERE id = ?", [{ username: userUpdate.username, email: userUpdate.email, password: userUpdate.password }, userUpdate.id], (err, resu) => {
+    //     if (err) {
+    //         throw err;
+    //     }
+    // });
+
+    // res.redirect("/");
+
+});
 
 module.exports = router;
