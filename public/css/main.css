@@ -14,11 +14,11 @@
     text-align: center;
   }
   .text-box h1{
-    font-size: 62px;
+    font-size: 70px;
   }
   .text-box p{
     margin: 10px 0 40px;
-    font-size: 18px;
+    font-size: 23px;
     color: #fff;
   }
   .hero-btn{
@@ -121,34 +121,6 @@ h1{
 .card:hover {
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 }
-.card__date {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-    padding-top: 10px;
-    background-color: coral;
-    border-radius: 50%;
-    color: #fff;
-    text-align: center;
-    font-weight: 700;
-    line-height: 13px;
-}
-
-.card__date__day {
-    font-size: 14px;
-}
-
-.card__date__month {
-    text-transform: uppercase;
-    font-size: 10px;
-}
-
-
-/**
-* THUMB
-**/
 
 .card__thumb {
     height: 245px;
@@ -180,11 +152,6 @@ h1{
     transform: scale(1.2);
 }
 
-
-/**
-* card_BODY
-**/
-
 .card__body {
     position: relative;
     height: 185px;
@@ -195,19 +162,6 @@ h1{
 
 .card:hover .card__body {
     height: 300px;
-}
-
-.card__category {
-    position: absolute;
-    top: -25px;
-    left: 0;
-    height: 25px;
-    padding: 0 15px;
-    background-color: coral;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 11px;
-    line-height: 25px;
 }
 
 .card__title {

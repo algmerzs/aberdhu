@@ -1,7 +1,8 @@
-
+<!-- DOCUMENTAR (M) -->
 <section class="header">
   <nav class="navbar navbar-expand-lg">
-    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse nav-links" id="navbarNavDropdown">
@@ -13,25 +14,33 @@
           <a class="nav-link" href="/news">Noticias</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/indicators">Indicadores</a>
+          <a class="nav-link" href="/indicators">Criptomonedas</a>
         </li>
 
         <% if(user){ %>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <%= user.username %>
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/profile">Perfil</a>
-              <a class="dropdown-item" href="#">Cerrar sesión</a>
+              <a class="dropdown-item" href="/logout">Cerrar sesión</a>
             </div>
           </li>
-      <% } %>
+          <% } %>
 
+            <% if(!user){ %>
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Registrarme</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Inicia Sesión</a>
+              </li>
+              <% } %>
 
       </ul>
     </div>
   </nav>
 </section>
-

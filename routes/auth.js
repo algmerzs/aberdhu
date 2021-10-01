@@ -22,7 +22,9 @@ router.post("/auth", (req, res) => {
 
                 // 5. Crear sesión (cookie)
                 userLog.email = resu[0].email;
+
                 req.session.user = userLog;
+
 
                 // 6. Alerta
                 res.render("pages/login", {

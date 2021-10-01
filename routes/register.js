@@ -49,9 +49,10 @@ router.post("/register", (req, res) => {
                     newUser.password = await crypto.encryptPassword(newUser.password);
 
                     // 8. Insertar registro en BD
-                    connection.query("INSERT INTO users SET ?", [newUser], async (err, resu) => {
-                        if (err)
+                    await connection.query("INSERT INTO users SET ?", [newUser], (err, resu) => {
+                        if (err) {
                             console.log(err);
+                        }
                     });
 
                 } else {

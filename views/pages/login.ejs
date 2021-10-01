@@ -1,57 +1,64 @@
+<!-- DOCUMENTAR (M) -->
+
 <!DOCTYPE html>
 
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script defer src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script defer src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <link rel="stylesheet" href="./resources/css/stylelogin.css">
-    <title>Inicar sesión</title>
-</head>
-<body>
-    <div class="wrapper fadeInDown">
-      <div id="formContent">
-        <!-- Logo -->
-        <div class="fadeIn first">
-          <img src="./resources/img/logo.png" id="icon" alt="logo" />
-        </div>
-    
-        <!-- Login Form -->
-        <form action="/auth" method="POST">
-          <input type="text" REQUIRED id="username" class="fadeIn second" name="username" placeholder="Ingresa tu usuario">
-          <input type="password" REQUIRED id="password" class="fadeIn third" name="password" placeholder="Ingresa tu contraseña">
-          <input type="submit" class="fadeIn fourth" value="Ingresa">
-        </form>
-    
-        <!-- Register -->
-        <div id="formFooter">
-          <a class="underlineHover" href="/register">Registrarme</a>
-        </div>
-      
-      </div>
-    </div>
 
-    <% if(typeof alert != "undefined" ) { %>
-      <script>
-        Swal.fire({
-          icon: '<%= alertIcon %>',
-          title: '<%= alertTitle %>',
-          text: '<%= alertMessage %>',
-          showConfirmButton: <%= showConfirmButton %>,
-          timer: <%= timer %>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script defer src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script defer src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <link rel="stylesheet" href="./resources/css/stylelogin.css">
+  <title>Inicar sesión</title>
+</head>
+
+<body>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Logo -->
+      <div class="fadeIn first">
+        <img src="./resources/img/logo.png" id="icon" alt="logo" />
+      </div>
+
+      <!-- Login Form -->
+      <form action="/auth" method="POST">
+        <input type="text" REQUIRED id="username" class="fadeIn second" name="username"
+          placeholder="Ingresa tu usuario">
+        <input type="password" REQUIRED id="password" class="fadeIn third" name="password"
+          placeholder="Ingresa tu contraseña">
+        <input type="submit" class="fadeIn fourth" value="Ingresa">
+      </form>
+
+      <!-- Register -->
+      <div id="formFooter">
+        <a class="underlineHover" href="/register">Registrarme</a>
+      </div>
+
+    </div>
+  </div>
+
+  <% if(typeof alert !="undefined" ) { %>
+    <script>
+      Swal.fire({
+        icon: '<%= alertIcon %>',
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
         });
-        <% if(reg){ %>
-          setTimeout( () => {
-            window.location = "/";
-          }, 1500);
+        <% if (reg) { %>
+        setTimeout(() => {
+          window.location = "/";
+        }, 1500);
         <% } %>
-        
-      </script>
+
+    </script>
     <% } %>
 
 </body>
+
 </html>
