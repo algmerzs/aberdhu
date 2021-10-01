@@ -1,43 +1,51 @@
+<!-- DOCUMENTAR (M) -->
+
+
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script defer src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script defer src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <link rel="stylesheet" href="./resources/css/stylelogin.css">
-    <title>Registro</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script defer src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script defer src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <link rel="stylesheet" href="./resources/css/stylelogin.css">
+  <title>Registro</title>
 </head>
+
 <body>
   <div class="wrapper fadeInDown">
     <div id="formContent">
-    
+
       <!-- Logo -->
       <div class="fadeIn first">
         <img src="./resources/img/logo.png" id="icon" alt="logo" />
       </div>
-  
+
       <!-- Register Form -->
       <form action="/register" method="POST">
         <input required type="text" id="username" class="fadeIn second" name="username" placeholder="Crea un usuario">
-        <input required type="password" id="password" class="fadeIn third" name="password" placeholder="Crea una contraseña">
-        <input required type="password" id="passwordConfirm" class="fadeIn third" name="passwordConfirm" placeholder="Confirma contraseña">
+        <input required type="password" id="password" class="fadeIn third" name="password"
+          placeholder="Crea una contraseña">
+        <input required type="password" id="passwordConfirm" class="fadeIn third" name="passwordConfirm"
+          placeholder="Confirma contraseña">
         <input required type="email" id="email" class="fadeIn third" name="email" placeholder="Coloca tu email">
         <input required type="submit" class="fadeIn fourth" value="Registrarme">
       </form>
-  
+
       <!-- Login -->
       <div id="formFooter">
         <a class="underlineHover" href="/login">Iniciar sesión</a>
       </div>
-    
+
     </div>
   </div>
-  
-  <% if(typeof alert != "undefined" ) { %>
+
+  <% if(typeof alert !="undefined" ) { %>
     <script>
       Swal.fire({
         icon: '<%= alertIcon %>',
@@ -46,14 +54,15 @@
         showConfirmButton: <%= showConfirmButton %>,
         timer: <%= timer %>
       });
-      <% if(reg){ %>
-        setTimeout( () => {
+      <% if (reg) { %>
+        setTimeout(() => {
           window.location = "/";
         }, 1500);
       <% } %>
-      
+
     </script>
-  <% } %>
-  
+    <% } %>
+
 </body>
+
 </html>

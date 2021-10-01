@@ -1,23 +1,28 @@
+<!-- DOCUMENTAR (M) -->
+
 <!DOCTYPE html>
 <html lang="es">
+<!-- Archivos necesarios -->
+
 <head>
     <%- include('../partials/head'); %>
-    <link rel="stylesheet" href="/resources/css/indicatorstyle.css">
-    <link rel="stylesheet" href="/resources/css/stylenavbar.css">
-    <script defer src="./resources/js/getIndicators.js"></script>
-    <title>Indicadores</title>
+        <link rel="stylesheet" href="/resources/css/indicatorstyle.css">
+        <link rel="stylesheet" href="/resources/css/stylenavbar.css">
+        <script defer src="./resources/js/getIndicators.js"></script>
+        <title>Criptomonedas</title>
 </head>
+
 <body>
-<!-- Búsqueda de criptomonedas  -->
-<!-- Reactividad -->
-<section>
-    <%- include('../partials/header'); %>
-    <div class="title-box-indicators">
-      <h4>Indicadores</h4>
-    </div>
-  </section>  
+    <!-- Banner -->
+    <section>
+        <%- include('../partials/header'); %>
+            <div class="title-box-indicators">
+                <h4>Criptomonedas</h4>
+            </div>
+    </section>
+    <!-- Tabla de criptomonedas -->
     <div id="indicators">
-        <table class="table table-dark mt-4 table-hover" >
+        <table style="background-color: #FFEFD5;" class="table mt-4 table-hover">
 
             <thead>
 
@@ -26,50 +31,53 @@
                     <td>PRECIO(USD)</td>
                     <td>CAMBIO PRECIO</td>
                     <td>24H VOLUME</td>
+                    <td>SEGUIR</td>
                 </tr>
 
             </thead>
             <tbody>
 
+                <!-- Funcionamiento criptomonedas -->
                 <tr v-for="i in displayedIndicators" :key="i.id">
 
-                    <td> 
-                        <img v-bind:src="i.image" width="3%" alt="i.name" class="img-fluid me-4"> 
-                        <span> {{ i.name }} </span>
-                        <span class="ms-3 text-muted text-uppercase"> {{ i.symbol }}  </span>
+                    <td>
+                        <img v-bind:src="i.image" width="3%" alt="i.name" class="img-fluid me-4">
+                        <span class="mr-3"> {{ i.name }} </span>
+                        <span class="ms-3 text-muted text-uppercase"> {{ i.symbol }} </span>
                     </td>
                     <td> ${{ i.current_price }} </td>
-                    <td v-bind:class="[i.price_change_percentage_24h > 0 ? 'text-success' : 'text-danger']" >  
-                        ${{ i.price_change_percentage_24h }} 
+                    <td v-bind:class="[i.price_change_percentage_24h > 0 ? 'text-success' : 'text-danger']">
+                        ${{ i.price_change_percentage_24h }}
                     </td>
                     <td> ${{ i.total_volume }} </td>
-
+                    <td>
+                        <button v-on:click="followIndi"><i class="far fa-star"></i></button>
+                    </td>
                 </tr>
             </tbody>
         </table>
         <div class="btn-group col-md-2 offset-md-5">
-            <button 
-            v-if="page != 1"
-            @click="page--"
-            class="btn btn-sm btn-outline-secondary"><<</button>
-            <button 
-            type="button"
-            @click="page = pageN"
-            v-for="pageN in pages.slice(page - 1, page+5)"
-            :key="pageN"
-            class="btn btn-sm btn-outline-secondary">{{pageN}}</button>
-            <button 
-            v-if="page < pages.length"
-            @click="page++"
-            class="btn btn-sm btn-outline-secondary">>></button>
+            <button v-if="page != 1" @click="page--" class="btn btn-sm btn-outline-secondary">
+                << <button type="button" @click="page = pageN" v-for="pageN in pages.slice(page - 1, page+5)"
+                    :key="pageN" class="btn btn-sm btn-outline-secondary">{{pageN}}
+            </button>
+            <button v-if="page < pages.length" @click="page++" class="btn btn-sm btn-outline-secondary"> >></button>
         </div>
-    </div> 
-    
-    <footer><%- include('../partials/footer'); %></footer>
-    <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </div>
 
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+    <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

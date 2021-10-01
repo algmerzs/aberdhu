@@ -49,6 +49,8 @@ router.get("/delete/:username", async (req, res) => {
     res.redirect("/");
 });
 
+// cerrar sesión
+
 router.get("/logout", async (req, res) => {
 
     await delete req.session.user;

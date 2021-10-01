@@ -1,3 +1,6 @@
+//DOCUMENTAR (M)
+
+
 // inicializaciones
 const express = require("express");
 const session = require("express-session");
@@ -18,12 +21,12 @@ app.use(session({
 
 // archivos estáticos
 app.use("/resources", express.static("public"));
-app.use("/resources", express.static(__dirname + "/public"))
+app.use("/resources", express.static(__dirname + "/public"));
 
 // variables de entorno
 dotenv.config({
     path: "./env/.env"
-})
+});
 
 // rutas
 app.use("/", require("./routes/router"));
