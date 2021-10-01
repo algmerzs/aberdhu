@@ -56,3 +56,4 @@ const newsList2 = new Vue({
         }
     }
 });
+

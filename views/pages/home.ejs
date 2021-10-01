@@ -4,6 +4,7 @@
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/stylenavbar.css">
+    <script defer src="/resources/js/help.js"></script>
     <title>Inicio</title>
   </head>
   <body>
@@ -21,19 +22,19 @@
       <p></p>
       <div class="row">
         <div class="course-col">
-          <h3 class="items"><i class="far fa-newspaper"></i>Noticias</h3>
+          <h3 class="items"><i class="far fa-newspaper"></i> Noticias</h3>
           <p class="text-items">
             Aquí podrás encontrar las últimas novedades del sector financiero con información sobre tickers.
           </p>
         </div>
         <div class="course-col">
-          <h3 class="items"><i class="fas fa-chart-line"></i>Indicadores</h3>
+          <h3 class="items"><i class="fas fa-chart-line"></i> Criptomonedas</h3>
           <p class="text-items">
             En Aberdhu encontrarás información importante sobre una gran variedad de criptomonedas cruciales actualmente.
           </p>
         </div>
         <div class="course-col">
-          <h3 class="items"><i class="far fa-envelope"></i>Alertas</h3>
+          <h3 class="items"><i class="far fa-envelope"></i> Alertas</h3>
           <p class="text-items">
             Puedes registrarte en Aberdhu para recibir correos ocasionales sobre las últimas actualizaciones que te interesen (solo enviaremos esto a quienes se registren).
           </p>
@@ -41,77 +42,48 @@
       </div>
     </section>
     <section class="facilities">
-      <h1 class="news-main-title">Latest News</h1>
+      <h1 class="news-main-title">Últimas noticias</h1>
       <p class="description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-        aliquam necessitatibus inventore, fugit ratione obcaecati!
+        Aquí encontrarás las últimas noticias relacionadas con el mundo financiario. ¡Incluso con sus tickets!
       </p>
-      <div class="container">
-        <article class="card">
-          <header class="card__thumb">
-            <a href="#"><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"/></a>
-          </header>
-          <div class="card__body">
-            <h2 class="card__title">
-              <a href="#">an ice cream sundae party！</a>
-            </h2>
-            <div class="card__subtitle">an ice cream sundae party！</div>
-            <p class="card__description">
-              5. Pour the mixture into a non-stick container and then freeze
-              overnight. Take treating your dog a step further by turning it
-              into an ice cream sundae party!
-            </p>
-          </div>
-        </article>
-        <article class="card">
-          <header class="card__thumb">
-            <a href="#"
-              ><img
-                src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"/></a>
-          </header>
-          <div class="card__body">
-            <h2 class="card__title">
-              <a href="#">an ice cream sundae party！</a>
-            </h2>
-            <div class="card__subtitle">an ice cream sundae party！</div>
-            <p class="card__description">
-              5. Pour the mixture into a non-stick container and then freeze
-              overnight. Take treating your dog a step further by turning it
-              into an ice cream sundae party!
-            </p>
-          </div>
-        </article>
-        <article class="card">
-          <header class="card__thumb">
-            <a href="#"
-              ><img
-                src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-            /></a>
-          </header>
-          <div class="card__body">
-            <h2 class="card__title">
-              <a href="#">an ice cream sundae party！</a>
-            </h2>
-            <div class="card__subtitle">an ice cream sundae party！</div>
-            <p class="card__description">
-              5. Pour the mixture into a non-stick container and then freeze
-              overnight. Take treating your dog a step further by turning it
-              into an ice cream sundae party!
-            </p>
-          </div>
-        </article>
+      <div class="container" id="newHOME"  >
+        
+          <article class="card" v-for="n in news" :key="n.id" >
+            <header class="card__thumb">
+              <img v-bind:src="n.image_url" />
+            </header>
+            <div class="card__body">
+              <h2 class="card__title">
+                {{ n.title }}
+              </h2>
+              <p class="card__description">
+                {{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...
+              </p>
+            </div>
+          </article>
+
+        </a>
       </div>
     </section>
-    <section>
-      <h1>Indicators</h1>
-      <p class="text-indicators">The last indicators</p>
+    <section class="pt-5 container" id="indicators" >
+      <h1>Criptomonedas</h1>
+      
+      <div class="card" style="width: 18rem;" v-for="i in indi" ::key="i.id">
+        <img v-bind:src="i.image" class="card-img-top" alt="...">
+        <div class="card-body">
+          <span> {{ i.name }} </span>
+          <h3> ${{ i.current_price }} </h3>
+        </div>
+      </div>
+
     </section>
     <section class="cta">
-      <h1>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
-        voluptate necessitatibus velit dolorem consequatur deleniti?
+      <h1 class="m-3">
+        TIP: Las criptomonedas tienen cambios, registrate para detectarlos primero que todos. 
       </h1>
-      
+      <h3 class="text-light m-3">
+        ⍟ Dale click en la estrella a la criptomoneda que deseas conocer y te enviaremos correos de sus cambios
+      </h3>
     </section>
     <footer><%- include('../partials/footer'); %></footer>
     <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
