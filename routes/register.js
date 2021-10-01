@@ -9,7 +9,6 @@ router.post("/register", (req, res) => {
 
     // objeto con la información del usuario
     let newUser = {
-        "id": "",
         "username": req.body.username,
         "password": req.body.password,
         "email": req.body.email
@@ -33,6 +32,7 @@ router.post("/register", (req, res) => {
                 if (newUser.password === passwordConfirm) {
 
                     // 5. Crear sesión (cookie)
+                    req.session.user = newUser;
 
                     // 6. Alerta
                     res.render("pages/register", {
@@ -52,15 +52,8 @@ router.post("/register", (req, res) => {
                     await connection.query("INSERT INTO users SET ?", [newUser], (err, resu) => {
                         if (err) {
                             console.log(err);
-                        } else {
-
-                            newUser.id = resu.insertId;
-
-                            req.session.user = newUser;
-
                         }
                     });
-
 
                 } else {
 

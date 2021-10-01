@@ -7,7 +7,6 @@ const router = express.Router();
 router.post("/auth", (req, res) => {
 
     let userLog = {
-        "id": "",
         "username": req.body.username,
         "password": req.body.password,
         "email": ""
@@ -23,7 +22,6 @@ router.post("/auth", (req, res) => {
 
                 // 5. Crear sesión (cookie)
                 userLog.email = resu[0].email;
-                userLog.id = resu[0].id;
 
                 req.session.user = userLog;
 
