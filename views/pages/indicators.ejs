@@ -51,7 +51,7 @@
                     </td>
                     <td> ${{ i.total_volume }} </td>
                     <td>
-                        <button v-on:click="followIndi"><i class="far fa-star"></i></button>
+                        <i id="follow" class="far fa-star"></i>
                     </td>
                 </tr>
             </tbody>
@@ -78,6 +78,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <script>
+
+        let followBtn = document.querySelector("#follow");
+        let count = 0;
+
+        followBtn.addEventListener("click", () => {
+
+
+            console.log(count);
+
+            // if (count == 0) {
+            //     followBtn.classList.add = "fas fa-star";
+            //     followBtn.classList.remove = "far fa-star";
+            //     count = 0;
+
+            // }
+            // if (count == 1) {
+            //     followBtn.classList.add = "far fa-star";
+            //     followBtn.classList.remove = "fas fa-star";
+            //     count = 1;
+
+            // }
+        });
+
+    </script>
 </body>
 
 </html>

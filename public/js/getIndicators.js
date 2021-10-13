@@ -35,9 +35,6 @@ const listIndi = new Vue({
             for (let i = 1; i <= nPages; i++) {
                 this.pages.push(i);
             }
-        },
-        followIndi() {
-            let isFollowing = true;
         }
     },
     computed: {
