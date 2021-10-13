@@ -1,15 +1,8 @@
-// let parameters = {
-//     "vs_currency": "usd",
-//     "order": "market_cap_desc",
-//     "per_page": "20",
-//     "page": "1"
-// }
-
 const listIndi = new Vue({
     el: '#indicators',
     data: {
         indi: [],
-        baseURL: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc",
+        baseURL: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15",
         page: 1,
         perPage: 15,
         pages: []
@@ -23,31 +16,18 @@ const listIndi = new Vue({
             let indiInJson = await res.json();
             this.indi = indiInJson;
         },
-        paginate(indi) {
-            let page = this.page;
-            let perPage = this.perPage;
-            let from = (page * perPage) - perPage;
-            let to = (page * perPage);
-            return indi.slice(from, to);
-        },
-        setIndicators() {
-            let nPages = Math.ceil(this.indi.length / this.perPage);
-            for (let i = 1; i <= nPages; i++) {
-                this.pages.push(i);
+        followIndi(indi) {
+            indicator = document.getElementById(indi);
+
+            if (indicator.classList[0] === "bg-danger" || indicator.classList[2] === "bg-danger") {
+                indicator.classList.remove("bg-danger");
+                indicator.classList.add("bg-success");
+                indicator.innerText = "Siguiendo";
+            } else {
+                indicator.classList.remove("bg-success");
+                indicator.classList.add("bg-danger");
+                indicator.innerText = "Seguir";
             }
-        },
-        followIndi() {
-            let isFollowing = true;
-        }
-    },
-    computed: {
-        displayedIndicators() {
-            return this.paginate(this.indi);
-        }
-    },
-    watch: {
-        indi() {
-            this.setIndicators();
         }
     }
 });

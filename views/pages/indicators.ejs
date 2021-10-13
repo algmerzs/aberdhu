@@ -38,7 +38,7 @@
             <tbody>
 
                 <!-- Funcionamiento criptomonedas -->
-                <tr v-for="i in displayedIndicators" :key="i.id">
+                <tr v-for="i in indi" :key="i.id" @click="followIndi(i.symbol)">
 
                     <td>
                         <img v-bind:src="i.image" width="3%" alt="i.name" class="img-fluid me-4">
@@ -51,18 +51,12 @@
                     </td>
                     <td> ${{ i.total_volume }} </td>
                     <td>
-                        <button v-on:click="followIndi"><i class="far fa-star"></i></button>
+                        <a v-bind:id="i.symbol" class="bg-danger text-light p-2" href="#">Seguir</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="btn-group col-md-2 offset-md-5">
-            <button v-if="page != 1" @click="page--" class="btn btn-sm btn-outline-secondary">
-                << <button type="button" @click="page = pageN" v-for="pageN in pages.slice(page - 1, page+5)"
-                    :key="pageN" class="btn btn-sm btn-outline-secondary">{{pageN}}
-            </button>
-            <button v-if="page < pages.length" @click="page++" class="btn btn-sm btn-outline-secondary"> >></button>
-        </div>
+
     </div>
 
     <footer>
