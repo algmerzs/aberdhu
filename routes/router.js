@@ -1,13 +1,14 @@
 const express = require("express");
 const connection = require("../database/database");
 const router = express.Router();
+const { isLoggedIn, isNotLoggedIn } = require('../lib/auth.js');
 
 // verificaciones
-router.get("/login", (req, res) => {
+router.get("/login", isNotLoggedIn, (req, res) => {
     res.render("pages/login");
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", isNotLoggedIn, (req, res) => {
     res.render("pages/register");
 });
 
@@ -29,7 +30,7 @@ router.get("/indicators", (req, res) => {
     res.render("pages/indicators", { user });
 });
 
-router.get("/profile", (req, res) => {
+router.get("/profile", isLoggedIn,(req, res) => {
 
     let user = req.session.user;
     res.render("pages/userprofile", { user });
@@ -38,7 +39,7 @@ router.get("/profile", (req, res) => {
 
 // eliminar usuario
 
-router.get("/delete/:username", async (req, res) => {
+router.get("/delete/:username",isLoggedIn, async (req, res) => {
     const { username } = req.params;
     await connection.query("DELETE FROM users WHERE username = ?", [username], (err, resu) => {
         if (err) {
@@ -51,7 +52,7 @@ router.get("/delete/:username", async (req, res) => {
 
 // cerrar sesión
 
-router.get("/logout", async (req, res) => {
+router.get("/logout",isLoggedIn, async (req, res) => {
 
     await delete req.session.user;
     res.redirect("/");

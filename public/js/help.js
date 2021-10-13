@@ -19,7 +19,7 @@ const listIndi = new Vue({
         indi: []
     },
     async mounted() {
-        let res = await fetch("https://api.coingecko.com/api/v3/coins/markets?page=1&per_page=5&vs_currency=usd&order=market_cap_desc");
+        let res = await fetch("https://api.coingecko.com/api/v3/coins/markets?page=1&per_page=4&vs_currency=usd&order=market_cap_desc");
         let indiInJson = await res.json();
         this.indi = indiInJson;
     }

@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/resources/css/main.css">
@@ -10,21 +9,17 @@
     <script defer src="/resources/js/help.js"></script>
     <title>Inicio</title>
 </head>
-
 <body>
   <section>
     <%- include('../partials/header'); %>
-
       <div class="text-box">
         <h1>Bienvenido a Aberdhu </h1>
         <p>Somos una página de noticias financieras e indicadores económicos, nuestros servicios serán de gran ayuda a
           quienes deseen adentrarse superficialmente al mundo económico y financiero </p>
-
       </div>
   </section>
   <section class="course">
     <h1>Podrás encontrar</h1>
-    <p></p>
     <div class="row">
       <div class="course-col">
         <h3 class="items"><i class="far fa-newspaper"></i> Noticias</h3>
@@ -53,7 +48,6 @@
       Aquí encontrarás las últimas noticias relacionadas con el mundo financiario. ¡Incluso con sus tickets!
     </p>
     <div class="container" id="newHOME">
-
       <article class="card" v-for="n in news" :key="n.id">
         <header class="card__thumb">
           <img v-bind:src="n.image_url" />
@@ -63,25 +57,23 @@
             {{ n.title }}
           </h2>
           <p class="card__description">
-            {{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...
+            {{ n.description.length > 90 ? n.description.substr(0,100) : n.description }}...
           </p>
         </div>
       </article>
-
-      </a>
     </div>
   </section>
-  <section class="pt-5 container" id="indicators">
+  <section class="pt-4" id="indicators">
     <h1>Criptomonedas</h1>
-
-    <div class="card" style="width: 18rem;" v-for="i in indi" ::key="i.id">
-      <img v-bind:src="i.image" class="card-img-top" alt="...">
-      <div class="card-body">
-        <span> {{ i.name }} </span>
-        <h3> ${{ i.current_price }} </h3>
+    <div class="container-cripto"> 
+      <div class="card" style="width: 18rem;" v-for="i in indi" ::key="i.id">
+        <img v-bind:src="i.image" class="card-img-top" alt="...">
+        <div class="card-body">
+          <span> {{ i.name }} </span>
+          <h3> ${{ i.current_price }} </h3>
+        </div>
       </div>
     </div>
-
   </section>
   <section class="cta">
     <h1 class="m-3">
@@ -105,5 +97,4 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 </body>
-
 </html>
