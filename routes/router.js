@@ -30,16 +30,23 @@ router.get("/indicators", (req, res) => {
     res.render("pages/indicators", { user });
 });
 
-router.get("/profile", isLoggedIn,(req, res) => {
+router.get("/profile", isLoggedIn, (req, res) => {
 
     let user = req.session.user;
     res.render("pages/userprofile", { user });
 
 });
 
+// agregar criptomoneda a BD
+
+router.get("/add/:indi/:price", isLoggedIn, async (req, res) => {
+    const { indi, price } = req.params;
+    console.log("indicador:", indi, "precio:", price);
+});
+
 // eliminar usuario
 
-router.get("/delete/:username",isLoggedIn, async (req, res) => {
+router.get("/delete/:username", isLoggedIn, async (req, res) => {
     const { username } = req.params;
     await connection.query("DELETE FROM users WHERE username = ?", [username], (err, resu) => {
         if (err) {
@@ -52,7 +59,7 @@ router.get("/delete/:username",isLoggedIn, async (req, res) => {
 
 // cerrar sesión
 
-router.get("/logout",isLoggedIn, async (req, res) => {
+router.get("/logout", isLoggedIn, async (req, res) => {
 
     await delete req.session.user;
     res.redirect("/");
