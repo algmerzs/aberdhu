@@ -32,6 +32,7 @@ dotenv.config({
 app.use("/", require("./routes/router"));
 app.use("/", require("./routes/register"));
 app.use("/", require("./routes/auth"));
+app.use("/", require("./routes/follow"));
 
 // motor de vistas
 app.set("view engine", "ejs");
