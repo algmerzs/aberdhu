@@ -61,15 +61,38 @@ router.get("/addIndi/:symbol/:price", isLoggedIn, async (req, res) => {
                 indi_username: userId,
             }
 
-            connection.query("INSERT INTO indicators SET ?", [newFollow], (err, resu) => {
+            connection.query("SELECT * FROM indicators WHERE indi_username = ? AND symbol = ?", [userId, symbol], (err, resu) => {
+
                 if (err)
                     throw err
 
-                console.log(resu);
-            })
+                if (resu.length > 0) {
+
+                    connection.query("DELETE FROM indicators WHERE indi_username = ? AND symbol = ?", [userId, symbol], (err, resu) => {
+                        if (err)
+                            throw err
+
+                        console.log(resu, "\n SUCCESS, DELETED COIN");
+                    });
+
+                    console.log("ALREADY FOLLOWING");
+                } else {
+
+                    connection.query("INSERT INTO indicators SET ?", [newFollow], (err, resu) => {
+                        if (err)
+                            throw err
+                        console.log("SUCCESS, STARTED FOLLOWING!")
+
+                    });
+
+                }
+
+            });
+
 
         } else {
             console.log("PLATFORM ERROR");
+            res.send("PLATFORM ERROR, PLEASE ENTER IN A FEW MINUTES \n ERROR EN LA PLATAFORMA, POR FAVOR ENTRE EN UNOS MINUTOS");
         }
 
     });
