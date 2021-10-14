@@ -17,17 +17,50 @@ router.get("/register", isNotLoggedIn, (req, res) => {
 router.get("/", (req, res) => {
 
     var user = req.session.user;
-    res.render("pages/home", { user });
+    let following = [];
+
+    if (user) {
+        connection.query("SELECT * FROM users WHERE username = ?", [user.username], (err, resu) => {
+
+            if (err)
+                throw err;
+
+            if (resu.length > 0) {
+
+                let userId = resu[0].id;
+
+                connection.query("SELECT * FROM indicators WHERE indi_username = ?", [userId], (err, resu) => {
+                    if (err)
+                        throw err
+
+                    if (resu.length > 0) {
+                        let i = 0;
+                        resu.map(r => {
+                            following[i] = r.symbol;
+                            i++;
+                        });
+                        res.render("pages/home", { user, following });
+                    }
+                });
+            }
+
+        });
+    } else {
+        res.render("pages/home", { user });
+    }
 });
 
 router.get("/news", (req, res) => {
     let user = req.session.user;
+
     res.render("pages/news", { user });
 });
 
 router.get("/indicators", async (req, res) => {
 
     let user = req.session.user;
+    let following = req.session.follow;
+    console.log(following, user);
     res.render("pages/indicators", { user });
 });
 

@@ -35,7 +35,7 @@ router.get("/addIndi/:symbol/:price", isLoggedIn, async (req, res) => {
                         if (err)
                             throw err
 
-                        console.log(resu, "\n SUCCESS, DELETED COIN");
+                        console.log("SUCCESS, DELETED COIN");
                     });
 
                     console.log("ALREADY FOLLOWING");
@@ -51,7 +51,6 @@ router.get("/addIndi/:symbol/:price", isLoggedIn, async (req, res) => {
                 }
 
             });
-
 
         } else {
             console.log("PLATFORM ERROR");

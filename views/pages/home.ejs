@@ -17,12 +17,13 @@
       <div class="text-box">
         <% if(user) { %>
           <h1>Bienvenido de vuelta, <%= user.username %>! </h1>
-          <% } else { %>
-            <h1>Bienvenido a Aberdhu</h1>
-            <% } %>
-              <p>Somos una página de noticias financieras e indicadores económicos, nuestros servicios serán de gran
-                ayuda a
-                quienes deseen adentrarse superficialmente al mundo económico y financiero </p>
+          <%= following %>
+            <% } else { %>
+              <h1>Bienvenido a Aberdhu</h1>
+              <% } %>
+                <p>Somos una página de noticias financieras e indicadores económicos, nuestros servicios serán de gran
+                  ayuda a
+                  quienes deseen adentrarse superficialmente al mundo económico y financiero </p>
       </div>
   </section>
   <section class="course">
