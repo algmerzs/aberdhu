@@ -55,7 +55,7 @@
                     <% if(user) { %>
                         <td>
                             <a @click="followIndi(i.symbol)" v-bind:id="i.symbol" class="bg-danger text-light p-2"
-                                :href="'/add/' + i.symbol + '/' + i.current_price">Seguir</a>
+                                :href="'/addIndi/' + i.symbol + '/' + i.current_price">Seguir</a>
                         </td>
                         <% } %>
                 </tr>

@@ -43,9 +43,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img src="/resources/img/user.jpg" class="rounded">
-                  </a>
+                  <img src="/resources/img/user.jpg" class="rounded">
                 </div>
               </div>
             </div>
@@ -60,7 +58,10 @@
               </div>
               <div class="text-center">
                 <h3>
-                  Sr/Sra <%= user.username %> <span class="font-weight-light"></span>
+                  Sr/Sra <%= user.username %> con número de id <% if(user.id) { %> <span>
+                        <%= user.id %>
+                      </span>
+                      <% } else { %> no existe id <% } %> <span class="font-weight-light"></span>
                 </h3>
                 <hr class="my-4">
               </div>
@@ -100,14 +101,16 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-first-name">Contraseña</label>
+                        <label class="form-control-label mr-3" for="input-first-name">Contraseña</label>
+                        <input type="button" class="btn btn-outline-secondary icon" name="showPass" id="showPass"
+                          value="Mostrar">
                         <input type="password" name="password" id="input" class="form-control form-control-alternative"
-                          placeholder="Ingrese su contraseña" value="<%=user.password%>">
+                          value="<%=user.password%>" disabled="disabled">
                       </div>
                     </div>
-                    <input type="button" name="showPass" id="showPass" value="Mostrar">
                   </div>
                 </div>
+                <input type="submit" class="btn btn-outline-primary" value="Editar usuario">
                 <a href="/delete/<%=user.username%>" class="btn btn-outline-danger">Eliminar usuario</a>
                 <hr class="my-4">
               </form>

@@ -2,6 +2,7 @@ const express = require("express");
 const connection = require("../database/database");
 const router = express.Router();
 const { isLoggedIn, isNotLoggedIn } = require('../lib/auth.js');
+const crypto = require("../lib/crypto");
 
 // verificaciones
 router.get("/login", isNotLoggedIn, (req, res) => {
@@ -25,7 +26,19 @@ router.get("/news", (req, res) => {
     res.render("pages/news", { user });
 });
 
-router.get("/indicators", (req, res) => {
+router.get("/indicators", async (req, res) => {
+
+    var indicators = [];
+
+    await connection.query("SELECT * FROM users", (err, resu) => {
+        if (err) {
+            throw err
+        }
+        indicators = resu;
+        // console.log(indicators[0]);
+    });
+
+    console.log(indicators);
     let user = req.session.user;
     res.render("pages/indicators", { user });
 });
@@ -37,12 +50,21 @@ router.get("/profile", isLoggedIn, (req, res) => {
 
 });
 
-// agregar criptomoneda a BD
 
-router.get("/add/:indi/:price", isLoggedIn, async (req, res) => {
-    const { indi, price } = req.params;
-    console.log("indicador:", indi, "precio:", price);
+// agregar y eliminar criptomoneda a BD
+
+router.get("/addIndi/:symbol/:price", isLoggedIn, async (req, res) => {
+    const { symbol, price } = req.params;
+    const newFollow = {
+        symbol,
+        current_price: price,
+        indi_username
+    }
+    // await connection.query("")
+    res.redirect("/indicators");
+
 });
+
 
 // eliminar usuario
 
@@ -55,6 +77,43 @@ router.get("/delete/:username", isLoggedIn, async (req, res) => {
     });
     await delete req.session.user;
     res.redirect("/");
+});
+
+// editar usuario
+
+router.post("/update", isLoggedIn, async (req, res) => {
+
+    let id = req.session.user.id;
+    let { username, password, email } = req.body;
+
+    let cookieUser = {
+        id,
+        username,
+        password,
+        email
+    }
+
+    console.log("cookie:", cookieUser);
+
+    encryPass = await crypto.encryptPassword(password);
+
+    let updatedUser = {
+        username,
+        password: encryPass,
+        email
+    }
+
+    console.log("updated:", updatedUser);
+
+    // await connection.query("UPDATE users SET ? WHERE id = ?", [updatedUser, id], (err, resu) => {
+    //     if (err) {
+    //         throw err;
+    //     }
+    // });
+
+
+    // res.redirect("/");
+
 });
 
 // cerrar sesión

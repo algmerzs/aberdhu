@@ -9,7 +9,7 @@ CREATE TABLE users(
 
 -- tabla de criptomonedas
 CREATE TABLE indicators(
-    id_indi INT(11) NOT NULL,
+    id_indi INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     symbol VARCHAR(10) NOT NULL,
     current_price DECIMAL(15,15) NOT NULL,
     indi_username INT(11) NOT NULL,
