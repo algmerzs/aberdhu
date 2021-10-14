@@ -445,26 +445,12 @@
       padding-left: 39px !important;
     }
   }
-  
-  .dropdown {
-    display: inline-block;
+  #showPass{
+  width: 60px;
+  height: 40px;
+  font-size: 13px;
+  text-align: center;
   }
-  
-  .dropdown-menu {
-    min-width: 12rem;
-  }
-  
-  .dropdown-menu .dropdown-item {
-    font-size: .875rem;
-    padding: .5rem 1rem;
-  }
-  
-  .dropdown-menu .dropdown-item>i {
-    font-size: 1rem;
-    margin-right: 1rem;
-    vertical-align: -17%;
-  }
-
   .header {
     position: relative;
   }
