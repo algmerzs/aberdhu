@@ -17,7 +17,19 @@ router.get("/register", isNotLoggedIn, (req, res) => {
 router.get("/", (req, res) => {
 
     var user = req.session.user;
-    let following = [];
+    var following = [];
+
+    const arrayToString = (arr) => {
+        let str = '';
+        for (let i = 0; i < arr.length; i++) {
+            if (Array.isArray(arr[i])) {
+                str += `${arrayToString(arr[i])} `;
+            } else {
+                str += `-${arr[i]}`;
+            };
+        };
+        return str;
+    };
 
     if (user) {
         connection.query("SELECT * FROM users WHERE username = ?", [user.username], (err, resu) => {
@@ -39,8 +51,11 @@ router.get("/", (req, res) => {
                             following[i] = r.symbol;
                             i++;
                         });
-                        res.render("pages/home", { user, following });
+
                     }
+                    let final = arrayToString(following);
+                    res.cookie("follows", final);
+                    res.render("pages/home", { user });
                 });
             }
 
@@ -48,19 +63,17 @@ router.get("/", (req, res) => {
     } else {
         res.render("pages/home", { user });
     }
+
 });
 
 router.get("/news", (req, res) => {
     let user = req.session.user;
-
     res.render("pages/news", { user });
 });
 
 router.get("/indicators", async (req, res) => {
 
     let user = req.session.user;
-    let following = req.session.follow;
-    console.log(following, user);
     res.render("pages/indicators", { user });
 });
 
@@ -89,6 +102,8 @@ router.get("/delete/:username", isLoggedIn, async (req, res) => {
 router.get("/logout", isLoggedIn, async (req, res) => {
 
     await delete req.session.user;
+    res.clearCookie("follows");
+
     res.redirect("/");
 
 });

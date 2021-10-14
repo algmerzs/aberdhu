@@ -28,3 +28,10 @@ const listIndi = new Vue({
         }
     }
 });
+let followingCRIPTO = document.cookie;
+if (followingCRIPTO != '') {
+    let cript = followingCRIPTO.split("-");
+    cript.shift();
+}
+
+console.log(cript);
