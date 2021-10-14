@@ -17,7 +17,7 @@ router.get("/register", isNotLoggedIn, (req, res) => {
 // páginas
 router.get("/", (req, res) => {
 
-    let user = req.session.user;
+    var user = req.session.user;
     res.render("pages/home", { user });
 });
 
@@ -28,17 +28,6 @@ router.get("/news", (req, res) => {
 
 router.get("/indicators", async (req, res) => {
 
-    var indicators = [];
-
-    await connection.query("SELECT * FROM users", (err, resu) => {
-        if (err) {
-            throw err
-        }
-        indicators = resu;
-        // console.log(indicators[0]);
-    });
-
-    console.log(indicators);
     let user = req.session.user;
     res.render("pages/indicators", { user });
 });
@@ -55,13 +44,36 @@ router.get("/profile", isLoggedIn, (req, res) => {
 
 router.get("/addIndi/:symbol/:price", isLoggedIn, async (req, res) => {
     const { symbol, price } = req.params;
-    const newFollow = {
-        symbol,
-        current_price: price,
-        indi_username
-    }
-    // await connection.query("")
-    res.redirect("/indicators");
+    let user = req.session.user;
+
+    await connection.query("SELECT * FROM users WHERE username = ?", [user.username], (err, resu) => {
+
+        if (err)
+            throw err;
+
+        if (resu.length > 0) {
+
+            let userId = resu[0].id;
+
+            const newFollow = {
+                symbol,
+                current_price: price,
+                indi_username: userId,
+            }
+
+            connection.query("INSERT INTO indicators SET ?", [newFollow], (err, resu) => {
+                if (err)
+                    throw err
+
+                console.log(resu);
+            })
+
+        } else {
+            console.log("PLATFORM ERROR");
+        }
+
+    });
+    // res.redirect("/indicators");
 
 });
 
@@ -77,43 +89,6 @@ router.get("/delete/:username", isLoggedIn, async (req, res) => {
     });
     await delete req.session.user;
     res.redirect("/");
-});
-
-// editar usuario
-
-router.post("/update", isLoggedIn, async (req, res) => {
-
-    let id = req.session.user.id;
-    let { username, password, email } = req.body;
-
-    let cookieUser = {
-        id,
-        username,
-        password,
-        email
-    }
-
-    console.log("cookie:", cookieUser);
-
-    encryPass = await crypto.encryptPassword(password);
-
-    let updatedUser = {
-        username,
-        password: encryPass,
-        email
-    }
-
-    console.log("updated:", updatedUser);
-
-    // await connection.query("UPDATE users SET ? WHERE id = ?", [updatedUser, id], (err, resu) => {
-    //     if (err) {
-    //         throw err;
-    //     }
-    // });
-
-
-    // res.redirect("/");
-
 });
 
 // cerrar sesión

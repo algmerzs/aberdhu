@@ -4,20 +4,12 @@ const connection = require("../database/database");
 const crypto = require("../lib/crypto");
 const router = express.Router();
 
-let test;
-
-const setOutput = (rows) => {
-    test = rows;
-    console.log(test);
-}
-
 router.post("/auth", (req, res) => {
 
-    let userLog = {
-        "id": "",
-        "username": req.body.username,
-        "password": req.body.password,
-        "email": ""
+    var userLog = {
+        username: req.body.username,
+        password: req.body.password,
+        email: ""
     }
 
     connection.query("SELECT * FROM users WHERE username = ?", [userLog.username], async (err, resu) => {
@@ -28,14 +20,10 @@ router.post("/auth", (req, res) => {
             const validPassword = await crypto.matchPassword(userLog.password, resu[0].password);
             if (validPassword) {
 
-
-
                 // 5. Crear sesión (cookie)
                 userLog.email = resu[0].email;
-                userLog.id = resu[0].id;
 
                 req.session.user = userLog;
-
 
                 // 6. Alerta
                 res.render("pages/login", {
