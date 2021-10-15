@@ -41,3 +41,6 @@ app.set("view engine", "ejs");
 app.listen(7000, () => {
     console.log("Server running in http://localhost:7000");
 });
+
+// enviador de correos
+require("./lib/mailer");
