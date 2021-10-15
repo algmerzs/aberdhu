@@ -6,6 +6,7 @@
   <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/stylenavbar.css">
+    <link rel="stylesheet" href="/resources/css/cardcripto.css">
     <script defer src="/resources/js/help.js"></script>
     <title>Inicio</title>
 </head>
@@ -48,19 +49,18 @@
       Aquí encontrarás las últimas noticias relacionadas con el mundo financiario. ¡Incluso con sus tickets!
     </p>
     <div class="container" id="newHOME">
-      <article class="card" v-for="n in news" :key="n.id">
-        <header class="card__thumb">
-          <img v-bind:src="n.image_url" />
-        </header>
-        <div class="card__body">
-          <h2 class="card__title">
-            {{ n.title }}
-          </h2>
-          <p class="card__description">
-            {{ n.description.length > 90 ? n.description.substr(0,100) : n.description }}...
-          </p>
-        </div>
-      </article>
+        <div class="card-columns">
+          <div class="card bg-white"  v-for="n in news" :key="n.id">
+            <a v-bind:href="n.article_url" target="_blank">
+            <img class="card-img-top" v-bind:src="n.image_url" alt="Card image cap">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">{{n.title.length > 20 ? n.title.substr(0,50) : n.title }}...</h5>
+              <p class="card-text">{{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...</p>
+              <p class="card-text"><small class="text-muted"><i class="far fa-user"></i> {{n.publisher.name}}</small></p>
+            </div>
+          </div>
+      </div>
     </div>
   </section>
   <section class="pt-4" id="indicators">
@@ -80,7 +80,7 @@
       TIP: Las criptomonedas tienen cambios, registrate para detectarlos primero que todos.
     </h1>
     <h3 class="text-light m-3">
-      ⍟ Dale click en la estrella a la criptomoneda que deseas conocer y te enviaremos correos de sus cambios
+      Sigue la criptomoneda que deseas conocer y te enviaremos correos de sus cambios
     </h3>
   </section>
   <footer>

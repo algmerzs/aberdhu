@@ -72,14 +72,7 @@ h1{
 .facilities{
     background-color:#090c1c;
 }
-.container{
-    padding-top: 3%;
-    padding-bottom: 3%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-gap: 20px;
-    align-items: stretch;
-}
+
 .card {
     top: 50%;
     left: 50%;
@@ -91,71 +84,6 @@ h1{
     overflow: hidden;
     -webkit-transition: box-shadow 0.5s;
     transition: box-shadow 0.5s;
-}
-.card:hover {
-    box-shadow: 0 0 50px rgba(184, 180, 180, 0.062);
-}
-.card__thumb {
-    height: 180px;
-    overflow: hidden;
-    background-color: rgb(235, 224, 224);
-    -webkit-transition: height 0.5s;
-    transition: height 0.5s;
-}
-.card__thumb img {
-    width: 100%;
-    display: block;
-    opacity: 1;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
-    transition: opacity 0.5s, -webkit-transform 0.5s;
-    transition: opacity 0.5s, transform 0.5s;
-    transition: opacity 0.5s, transform 0.5s, -webkit-transform 0.5s;
-}
-.card:hover .card__thumb {
-    height: 130px;
-}
-.card:hover .card__thumb img {
-    opacity: 0.6;
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-}
-.card__body {
-
-    height: 185px;
-    padding: 20px;
-    -webkit-transition: height 0.5s;
-    transition: height 0.5s;
-}
-.card:hover .card__body {
-    height: 300px;
-}
-.card__title {
-    margin: 0;
-    padding: 0 0 10px 0;
-    color: #090c1c;
-    font-family: 'Lato', sans-serif;
-    font-size: 22px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-.card__description {
-    position: absolute;
-    left: 20px;
-    right: 20px;
-    bottom: 56px;
-    margin: 0;
-    padding: 0;
-    color: #090c1c;
-    opacity: 0;
-}
-.card:hover .card__description {
-    opacity: 1;
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-    -webkit-transition-delay: 0.2s;
-    transition-delay: 0.2s;
 }
 .title-news{
     color: white;
