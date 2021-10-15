@@ -73,7 +73,7 @@ h1{
     background-color:#090c1c;
 }
 
-.card {
+#card-cripto {
     top: 50%;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0);

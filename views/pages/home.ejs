@@ -6,7 +6,6 @@
   <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/stylenavbar.css">
-    <link rel="stylesheet" href="/resources/css/cardcripto.css">
     <script defer src="/resources/js/help.js"></script>
     <title>Inicio</title>
 </head>
@@ -49,7 +48,7 @@
       Aquí encontrarás las últimas noticias relacionadas con el mundo financiario. ¡Incluso con sus tickets!
     </p>
     <div class="container" id="newHOME">
-        <div class="card-columns">
+        <div class="card-columns p-2">
           <div class="card bg-white"  v-for="n in news" :key="n.id">
             <a v-bind:href="n.article_url" target="_blank">
             <img class="card-img-top" v-bind:src="n.image_url" alt="Card image cap">
@@ -66,7 +65,7 @@
   <section class="pt-4" id="indicators">
     <h1>Criptomonedas</h1>
     <div class="container-cripto"> 
-      <div class="card" style="width: 18rem;" v-for="i in indi" ::key="i.id">
+      <div class="card" id="card-cripto" style="width: 18rem;" v-for="i in indi" ::key="i.id">
         <img v-bind:src="i.image" class="card-img-top" alt="...">
         <div class="card-body">
           <span> {{ i.name }} </span>
