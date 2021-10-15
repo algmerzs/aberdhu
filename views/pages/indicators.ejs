@@ -20,6 +20,7 @@
                 <h4>Criptomonedas</h4>
             </div>
     </section>
+
     <!-- Tabla de criptomonedas -->
     <div id="indicators">
         <table style="background-color: #FFEFD5;" class="table mt-4 table-hover">
@@ -31,7 +32,7 @@
                     <td>PRECIO(USD)</td>
                     <td>CAMBIO PRECIO</td>
                     <td>24H VOLUME</td>
-                    <% if(user) { %>
+                    <% if(user) {%>
                         <td>SEGUIR</td>
                         <% } %>
                 </tr>
@@ -52,7 +53,7 @@
                         ${{ i.price_change_percentage_24h }}
                     </td>
                     <td> ${{ i.total_volume }} </td>
-                    <% if(user) { %>
+                    <% if(user) {%>
                         <td>
                             <a @click="followIndi(i.symbol)" v-bind:id="i.symbol" class="bg-danger text-light p-2"
                                 :href="'/addIndi/' + i.symbol + '/' + i.current_price">Seguir</a>
@@ -66,6 +67,7 @@
     <footer>
         <%- include('../partials/footer'); %>
     </footer>
+
     <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -1,7 +1,7 @@
 const express = require("express");
 const connection = require("../database/database");
 const router = express.Router();
-const { isLoggedIn, isNotLoggedIn } = require('../lib/auth.js');
+const { isLoggedIn } = require('../lib/auth.js');
 
 // agregar y eliminar criptomoneda a BD
 

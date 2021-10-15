@@ -12,7 +12,6 @@ router.get("/register", isNotLoggedIn, (req, res) => {
     res.render("pages/register");
 });
 
-
 // páginas
 router.get("/", (req, res) => {
 

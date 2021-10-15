@@ -1,3 +1,9 @@
+let cript = [];
+let cript2 = [];
+if (document.cookie != '') {
+    cript = document.cookie.split("-");
+    cript2 = cript.shift()
+}
 const listIndi = new Vue({
     el: '#indicators',
     data: {
@@ -6,6 +12,7 @@ const listIndi = new Vue({
     },
     created() {
         this.getIndicators();
+        this.changeColors();
     },
     methods: {
         async getIndicators() {
@@ -15,7 +22,6 @@ const listIndi = new Vue({
         },
         followIndi(indi) {
             indicator = document.getElementById(indi);
-
             if (indicator.classList[0] === "bg-danger" || indicator.classList[2] === "bg-danger") {
                 indicator.classList.remove("bg-danger");
                 indicator.classList.add("bg-success");
@@ -25,13 +31,15 @@ const listIndi = new Vue({
                 indicator.classList.add("bg-danger");
                 indicator.innerText = "Seguir";
             }
+        },
+        changeColors() {
+            setTimeout(() => {
+                cript.forEach(e => {
+                    document.getElementById(e).classList.remove("bg-danger");
+                    document.getElementById(e).classList.add("bg-success");
+                    document.getElementById(e).innerText = "Siguiendo";
+                })
+            }, 1000);
         }
     }
 });
-let followingCRIPTO = document.cookie;
-if (followingCRIPTO != '') {
-    let cript = followingCRIPTO.split("-");
-    cript.shift();
-}
-
-console.log(cript);
