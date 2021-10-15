@@ -58,7 +58,7 @@
               </div>
               <div class="text-center">
                 <h3>
-                  Sr/Sra <%= user.username %> <span class="font-weight-light"></span>
+                  <%= user.username %> <span class="font-weight-light"></span>
                 </h3>
                 <hr class="my-4">
               </div>
@@ -98,8 +98,7 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label mr-3" for="input-first-name">Contraseña</label>
-                        <input type="button" class="btn btn-outline-secondary icon" name="showPass" id="showPass"
-                          value="Mostrar">
+
                         <input type="password" name="password" id="input" class="form-control form-control-alternative"
                           value="<%=user.password%>" disabled="disabled">
                       </div>
@@ -107,6 +106,8 @@
                   </div>
                 </div>
                 <a href="/delete/<%=user.username%>" class="btn btn-outline-danger">Eliminar usuario</a>
+                <input type="button" class="btn btn-outline-secondary icon" name="showPass" id="showPass"
+                value="Mostrar">
                 <hr class="my-4">
               </form>
             </div>
