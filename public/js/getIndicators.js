@@ -1,5 +1,7 @@
+// obtener cookie de criptomonedas
 let cript = [];
 let cript2 = [];
+// crear array
 if (document.cookie != '') {
     cript = document.cookie.split("-");
     cript2 = cript.shift()
@@ -20,6 +22,7 @@ const listIndi = new Vue({
             let indiInJson = await res.json();
             this.indi = indiInJson;
         },
+        // colocar clases correspondientes a cuales sigue el usuario
         followIndi(indi) {
             indicator = document.getElementById(indi);
             if (indicator.classList[0] === "bg-danger" || indicator.classList[2] === "bg-danger") {

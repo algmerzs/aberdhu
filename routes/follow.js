@@ -5,11 +5,13 @@ const { isLoggedIn } = require('../lib/auth.js');
 
 // agregar y eliminar criptomoneda a BD
 
-router.get("/addIndi/:symbol/:price", isLoggedIn, async (req, res) => {
+router.get("/addIndi/:symbol/:price", isLoggedIn, (req, res) => {
     const { symbol, price } = req.params;
     let user = req.session.user;
 
-    await connection.query("SELECT * FROM users WHERE username = ?", [user.username], (err, resu) => {
+    // búsqueda BD
+
+    connection.query("SELECT * FROM users WHERE username = ?", [user.username], (err, resu) => {
 
         if (err)
             throw err;
@@ -36,6 +38,8 @@ router.get("/addIndi/:symbol/:price", isLoggedIn, async (req, res) => {
                             throw err
                     });
                 } else {
+
+                    // Insertar criptomoneda a BD
 
                     connection.query("INSERT INTO indicators SET ?", [newFollow], (err, resu) => {
                         if (err)

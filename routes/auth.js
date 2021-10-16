@@ -20,12 +20,12 @@ router.post("/auth", (req, res) => {
             const validPassword = await crypto.matchPassword(userLog.password, resu[0].password);
             if (validPassword) {
 
-                // 5. Crear sesión (cookie)
+                //Crear sesión (cookie)
                 userLog.email = resu[0].email;
 
                 req.session.user = userLog;
 
-                // 6. Alerta
+                //Alerta
                 res.render("pages/login", {
                     alert: true,
                     alertTitle: "Login",

@@ -1,3 +1,4 @@
+// paginación 
 const newsList2 = new Vue({
     el: '#news',
     data: {

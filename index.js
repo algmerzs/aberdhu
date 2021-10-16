@@ -1,15 +1,12 @@
-//DOCUMENTAR (M)
-
-
-// inicializaciones
+// Inicializaciones
 const express = require("express");
 const session = require("express-session");
 const dotenv = require("dotenv");
 
-// iniciar servidor
+// Iniciar servidor
 const app = express();
 
-// configuraciones y middlewares
+// Configuraciones y middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -19,16 +16,16 @@ app.use(session({
     saveUninitialized: true
 }));
 
-// archivos estáticos
+// Archivos estáticos
 app.use("/resources", express.static("public"));
 app.use("/resources", express.static(__dirname + "/public"));
 
-// variables de entorno
+// Variables de entorno
 dotenv.config({
     path: "./env/.env"
 });
 
-// rutas
+// Rutas
 app.use("/", require("./routes/router"));
 app.use("/", require("./routes/register"));
 app.use("/", require("./routes/auth"));
@@ -37,10 +34,10 @@ app.use("/", require("./routes/follow"));
 // motor de vistas
 app.set("view engine", "ejs");
 
-// iniciar escucha servidor
+// Iniciar escucha servidor
 app.listen(7000, () => {
     console.log("Server running in http://localhost:7000");
 });
 
-// enviador de correos
+// Enviar correos
 require("./lib/mailer");

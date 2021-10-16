@@ -1,12 +1,15 @@
+// obtener cookie de criptomonedas
 let cript = [];
 let cript2 = [];
+// crear array
 if (document.cookie != '') {
     cript = document.cookie.split("-");
     cript2 = cript.shift()
 }
+// enviar texto verificación
 if (document.cookie == 'follows=') {
     setTimeout(() => {
-        document.getElementById("msg").innerText = "POR EL MOMENTO NO SIGUES NINGUNA CRIPTOMONEDA"
+        document.getElementById("msg").innerText = "POR EL MOMENTO NO SIGUES NINGUNA CRIPTOMONEDA  \n    ≡(▔﹏▔)≡"
     }, 1000);
 }
 
@@ -36,11 +39,12 @@ const listIndi = new Vue({
         this.getFollowingIndi()
     },
     async mounted() {
-        let res = await fetch("https://api.coingecko.com/api/v3/coins/markets?page=1&per_page=4&vs_currency=usd&order=market_cap_desc");
+        let res = await fetch("https://api.coingecko.com/api/v3/coins/markets?page=1&per_page=3&vs_currency=usd&order=market_cap_desc");
         let indiInJson = await res.json();
         this.indi = indiInJson;
     },
     methods: {
+        //crear array de criptomonedas que sigue
         async getFollowingIndi() {
             let res = await fetch(this.URL);
             let indiInJson = await res.json();
