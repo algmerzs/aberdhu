@@ -1,10 +1,8 @@
-<!-- DOCUMENTAR (S) -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <%- include('../partials/head'); %>
-    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/homeuser.css">
     <link rel="stylesheet" href="/resources/css/stylenavbar.css">
     <script defer src="/resources/js/help.js"></script>
     <title>Inicio</title>
@@ -17,30 +15,6 @@
         <p>Somos una página de noticias financieras e indicadores económicos, nuestros servicios serán de gran ayuda a
           quienes deseen adentrarse superficialmente al mundo económico y financiero </p>
       </div>
-  </section>
-  <section class="course">
-    <h1>Podrás encontrar</h1>
-    <div class="row">
-      <div class="course-col">
-        <h3 class="items"><i class="far fa-newspaper"></i> Noticias</h3>
-        <p class="text-items">
-          Aquí podrás encontrar las últimas novedades del sector financiero con información sobre tickers.
-        </p>
-      </div>
-      <div class="course-col">
-        <h3 class="items"><i class="fas fa-chart-line"></i> Criptomonedas</h3>
-        <p class="text-items">
-          En Aberdhu encontrarás información importante sobre una gran variedad de criptomonedas cruciales actualmente.
-        </p>
-      </div>
-      <div class="course-col">
-        <h3 class="items"><i class="far fa-envelope"></i> Alertas</h3>
-        <p class="text-items">
-          Puedes registrarte en Aberdhu para recibir correos ocasionales sobre las últimas actualizaciones que te
-          interesen (solo enviaremos esto a quienes se registren).
-        </p>
-      </div>
-    </div>
   </section>
   <section class="facilities">
     <h1 class="news-main-title">Últimas noticias</h1>
@@ -56,6 +30,7 @@
           <div class="card-body">
             <h5 class="card-title">{{n.title.length > 20 ? n.title.substr(0,50) : n.title }}...</h5>
             <p class="card-text">{{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...</p>
+            <a v-bind:href="n.article_url" target="_blank" class="btn btn-outline-secondary btn-sm">Leer Más</a>
             <a href="" class="btn btn-outline-secondary btn-sm"><i class="far fa-user"></i> {{n.publisher.name}}</a>
           </div>
          </div>
@@ -76,11 +51,8 @@
   </section>
   <section class="cta">
     <h1 class="m-3">
-      TIP: Las criptomonedas tienen cambios, registrate para detectarlos primero que todos.
+      Recuerda que siguiendo la criptomoneda que deseas, recibiras correos cada vez que ocurra un cambio.
     </h1>
-    <h3 class="text-light m-3">
-      Sigue la criptomoneda que deseas conocer y te enviaremos correos de sus cambios
-    </h3>
   </section>
   <footer>
     <%- include('../partials/footer'); %>
