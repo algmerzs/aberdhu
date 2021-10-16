@@ -1,24 +1,11 @@
-const newsList = new Vue({
-    el: '#news',
-    data: {
-        news: []
-    },
-    async mounted() {
-
-        let res = await fetch(`https://api.polygon.io/v2/reference/news?${"limit=6"}&apiKey=dDrG9Sy4A8u30T0WffgfzqJfEl70Vbfo`)
-        let newsInJson = await res.json();
-        let news = await newsInJson.results;
-        this.news = news;
-    }
-});
-
+// paginación 
 const newsList2 = new Vue({
-    el: '#news2',
+    el: '#news',
     data: {
         news: [],
         baseURL: "https://api.polygon.io/v2/reference/news?limit=50&order=descending&sort=published_utc&ticker=AAPL&published_utc.gte=2021-04-26&apiKey=dDrG9Sy4A8u30T0WffgfzqJfEl70Vbfo",
         page: 1,
-        perPage: 10,
+        perPage: 6,
         pages: []
     },
     created() {
@@ -56,4 +43,3 @@ const newsList2 = new Vue({
         }
     }
 });
-

@@ -1,6 +1,7 @@
-<!-- DOCUMENTAR (S) -->
+<!-- Perfil usuario -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%- include('../partials/head'); %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -8,14 +9,13 @@
     <link rel="stylesheet" href="/resources/css/stylenavbar.css">
     <title>Perfil</title>
 </head>
+
 <body>
   <div class="main-content">
-    <!-- Top navbar -->
+    <!-- Barra navegación -->
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
-        <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" target="_blank">Perfil</a>
-
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/">Inicio</a>
       </div>
     </nav>
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <!-- Page content -->
+    <!-- Contenido de página -->
     <div class="container-fluid mt--7">
       <div class="row">
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
@@ -39,9 +39,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img src="/resources/img/user.jpg" class="rounded">
-                  </a>
+                  <img src="/resources/img/user.jpg" class="rounded">
                 </div>
               </div>
             </div>
@@ -56,7 +54,7 @@
               </div>
               <div class="text-center">
                 <h3>
-                  Sr/Sra <%= user.username %> <span class="font-weight-light"></span>
+                  <%= user.username %> <span class="font-weight-light"></span>
                 </h3>
                 <hr class="my-4">
               </div>
@@ -73,7 +71,7 @@
               </div>
             </div>
             <div class="card-body">
-              <form action="/update" method="POST">
+              <form>
                 <h6 class="heading-small text-muted mb-4">Información Personal</h6>
                 <div class="pl-lg-4">
                   <div class="row">
@@ -81,30 +79,32 @@
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Usuario</label>
                         <input type="text" name="username" id="input-username"
-                          class="form-control form-control-alternative" placeholder="Usuario"
-                          value="<%=user.username%>">
+                          class="form-control form-control-alternative" value="<%=user.username%>" disabled="disabled">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Correo Electronico</label>
                         <input type="email" name="email" id="input-email" class="form-control form-control-alternative"
-                          placeholder="user@example.com" value="<%=user.email%>">
+                          value="<%=user.email%>" disabled="disabled">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-first-name">Contraseña</label>
+                        <label class="form-control-label mr-3" for="input-first-name">Contraseña</label>
+
                         <input type="password" name="password" id="input" class="form-control form-control-alternative"
-                          placeholder="Ingrese su contraseña" value="<%=user.password%>">
+                          value="<%=user.password%>" disabled="disabled">
                       </div>
                     </div>
-                    <input type="button" name="showPass" id="showPass" value="Mostrar">
                   </div>
                 </div>
                 <a href="/delete/<%=user.username%>" class="btn btn-outline-danger">Eliminar usuario</a>
+                <input type="button" class="btn btn-outline-secondary icon" name="showPass" id="showPass"
+                  value="Mostrar">
+                <hr class="my-4">
               </form>
             </div>
           </div>
@@ -125,4 +125,5 @@
     });
   </script>
 </body>
+
 </html>

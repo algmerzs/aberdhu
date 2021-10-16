@@ -1,6 +1,7 @@
-<!-- DOCUMENTAR (S) -->
+<!-- Noticias -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/resources/css/newstyle.css">
@@ -8,6 +9,7 @@
     <script defer src="/resources/js/getNews.js"></script>
     <title>Noticias</title>
 </head>
+
 <body>
   <section>
     <%- include('../partials/header'); %>
@@ -15,35 +17,35 @@
         <h4>Noticias</h4>
       </div>
   </section>
-  <section class="pt-3  pb-3" >
+  <section class="pt-3  pb-3">
     <div class="container" id="news">
       <div class="container pt-4">
         <div class="card-columns">
-          <div class="card"  v-for="n in news" :key="n.id">
+          <div class="card" v-for="n in displayedNews" :key="n.id">
             <a v-bind:href="n.article_url" target="_blank">
-            <img class="card-img-top" v-bind:src="n.image_url" alt="Card image cap">
+              <img class="card-img-top" v-bind:src="n.image_url" alt="Card image cap">
             </a>
             <div class="card-body">
               <h5 class="card-title">{{n.title}}</h5>
               <p class="card-text">{{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...</p>
-              <p class="card-text"><small class="text-muted"><i class="far fa-user"></i> {{n.publisher.name}}</small></p>
+              <p class="card-text"><small class="text-muted"><i class="far fa-user"></i> {{n.publisher.name}}</small>
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="" id="news2">
-    <div class="btn-group col-md-2 offset-md-5">
-      <button v-if="page != 1" @click="page--" class="btn btn-sm btn-outline-secondary">
-      <<
-          <button type="button" @click="page = pageN" v-for="pageN in pages.slice(page - 1, page+5)" :key="pageN"
-            class="btn btn-sm btn-outline-secondary">{{pageN}}</button>
-          <button v-if="page < pages.length" @click="page++" class="btn btn-sm btn-outline-secondary">>></button>
+      <div class="btn-group col-md-2 offset-md-5">
+        <button v-if="page != 1" @click="page--" class="btn btn-sm btn-outline-secondary">
+          << <button type="button" @click="page = pageN" v-for="pageN in pages.slice(page - 1, page + 9)" :key="pageN"
+            class="btn btn-sm btn-outline-secondary">{{pageN}}
+        </button>
+        <button v-if="page < pages.length" @click="page++" class="btn btn-sm btn-outline-secondary">>></button>
+      </div>
     </div>
   </section>
   <footer>
     <%- include('../partials/footer'); %>
   </footer>
 </body>
+
 </html>

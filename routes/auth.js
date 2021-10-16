@@ -6,10 +6,10 @@ const router = express.Router();
 
 router.post("/auth", (req, res) => {
 
-    let userLog = {
-        "username": req.body.username,
-        "password": req.body.password,
-        "email": ""
+    var userLog = {
+        username: req.body.username,
+        password: req.body.password,
+        email: ""
     }
 
     connection.query("SELECT * FROM users WHERE username = ?", [userLog.username], async (err, resu) => {
@@ -20,13 +20,12 @@ router.post("/auth", (req, res) => {
             const validPassword = await crypto.matchPassword(userLog.password, resu[0].password);
             if (validPassword) {
 
-                // 5. Crear sesión (cookie)
+                //Crear sesión (cookie)
                 userLog.email = resu[0].email;
 
                 req.session.user = userLog;
 
-
-                // 6. Alerta
+                //Alerta
                 res.render("pages/login", {
                     alert: true,
                     alertTitle: "Login",

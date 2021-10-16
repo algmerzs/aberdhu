@@ -1,21 +1,20 @@
-// let parameters = {
-//     "vs_currency": "usd",
-//     "order": "market_cap_desc",
-//     "per_page": "20",
-//     "page": "1"
-// }
-
+// obtener cookie de criptomonedas
+let cript = [];
+let cript2 = [];
+// crear array
+if (document.cookie != '') {
+    cript = document.cookie.split("-");
+    cript2 = cript.shift()
+}
 const listIndi = new Vue({
     el: '#indicators',
     data: {
         indi: [],
-        baseURL: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc",
-        page: 1,
-        perPage: 15,
-        pages: []
+        baseURL: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40",
     },
     created() {
         this.getIndicators();
+        this.changeColors();
     },
     methods: {
         async getIndicators() {
@@ -23,31 +22,27 @@ const listIndi = new Vue({
             let indiInJson = await res.json();
             this.indi = indiInJson;
         },
-        paginate(indi) {
-            let page = this.page;
-            let perPage = this.perPage;
-            let from = (page * perPage) - perPage;
-            let to = (page * perPage);
-            return indi.slice(from, to);
-        },
-        setIndicators() {
-            let nPages = Math.ceil(this.indi.length / this.perPage);
-            for (let i = 1; i <= nPages; i++) {
-                this.pages.push(i);
+        // colocar clases correspondientes a cuales sigue el usuario
+        followIndi(indi) {
+            indicator = document.getElementById(indi);
+            if (indicator.classList[0] === "bg-danger" || indicator.classList[2] === "bg-danger") {
+                indicator.classList.remove("bg-danger");
+                indicator.classList.add("bg-success");
+                indicator.innerText = "Siguiendo";
+            } else {
+                indicator.classList.remove("bg-success");
+                indicator.classList.add("bg-danger");
+                indicator.innerText = "Seguir";
             }
         },
-        followIndi() {
-            let isFollowing = true;
-        }
-    },
-    computed: {
-        displayedIndicators() {
-            return this.paginate(this.indi);
-        }
-    },
-    watch: {
-        indi() {
-            this.setIndicators();
+        changeColors() {
+            setTimeout(() => {
+                cript.forEach(e => {
+                    document.getElementById(e).classList.remove("bg-danger");
+                    document.getElementById(e).classList.add("bg-success");
+                    document.getElementById(e).innerText = "Siguiendo";
+                })
+            }, 1000);
         }
     }
 });
