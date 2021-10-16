@@ -8,10 +8,10 @@ const connection = require("../database/database");
 router.post("/register", (req, res) => {
 
     // objeto con la información del usuario
-    let newUser = {
-        "username": req.body.username,
-        "password": req.body.password,
-        "email": req.body.email
+    var newUser = {
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email
     }
 
     // Confirmación de contraseña
@@ -49,10 +49,11 @@ router.post("/register", (req, res) => {
                     newUser.password = await crypto.encryptPassword(newUser.password);
 
                     // 8. Insertar registro en BD
-                    await connection.query("INSERT INTO users SET ?", [newUser], (err, resu) => {
+                    connection.query("INSERT INTO users SET ?", [newUser], async (err, resu) => {
                         if (err) {
                             console.log(err);
                         }
+
                     });
 
                 } else {

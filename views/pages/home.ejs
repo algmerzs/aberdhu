@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/resources/css/main.css">
@@ -9,13 +10,19 @@
     <script defer src="/resources/js/help.js"></script>
     <title>Inicio</title>
 </head>
+
 <body>
   <section>
     <%- include('../partials/header'); %>
       <div class="text-box">
-        <h1>Bienvenido a Aberdhu </h1>
-        <p>Somos una página de noticias financieras e indicadores económicos, nuestros servicios serán de gran ayuda a
-          quienes deseen adentrarse superficialmente al mundo económico y financiero </p>
+        <% if(user) { %>
+          <h1>Bienvenido de vuelta, <%= user.username %>! </h1>
+          <% } else { %>
+            <h1>Bienvenido a Aberdhu</h1>
+            <% } %>
+              <p>Somos una página de noticias financieras e indicadores económicos, nuestros servicios serán de gran
+                ayuda a
+                quienes deseen adentrarse superficialmente al mundo económico y financiero </p>
       </div>
   </section>
   <section class="course">
@@ -50,29 +57,53 @@
     <div class="container" id="newHOME">
       <div class="container">
         <div class="row">
-        <div class="col-lg-4 mb-4"  v-for="n in news" :key="n.id">
-        <div class="card">
-          <img v-bind:src="n.image_url" alt="" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">{{n.title.length > 20 ? n.title.substr(0,50) : n.title }}...</h5>
-            <p class="card-text">{{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...</p>
-            <a href="" class="btn btn-outline-secondary btn-sm"><i class="far fa-user"></i> {{n.publisher.name}}</a>
+          <div class="col-lg-4 mb-4" v-for="n in news" :key="n.id">
+            <div class="card">
+              <img v-bind:src="n.image_url" alt="" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{n.title.length > 20 ? n.title.substr(0,50) : n.title }}...</h5>
+                <p class="card-text">{{ n.description.length > 80 ? n.description.substr(0,100) : n.description }}...
+                </p>
+                <a href="" class="btn btn-outline-secondary btn-sm"><i class="far fa-user"></i> {{n.publisher.name}}</a>
+              </div>
+            </div>
           </div>
-         </div>
         </div>
-    </div>
   </section>
   <section class="pt-4" id="indicators">
     <h1>Criptomonedas</h1>
-    <div class="container-cripto"> 
-      <div class="card" id="card-cripto" style="width: 18rem;" v-for="i in indi" ::key="i.id">
-        <img v-bind:src="i.image" class="card-img-top" alt="...">
-        <div class="card-body">
-          <span> {{ i.name }} </span>
-          <h3> ${{ i.current_price }} </h3>
+
+
+    <% if(user) { %>
+
+      <p class="text-center" id="msg">
+
+      </p>
+
+      <div class="container-cripto container">
+        <div class="card" style="width: 18rem;" v-for="i in following" ::key="i.id">
+          <img v-bind:src="i.image" class="card-img-top" alt="...">
+          <div class="card-body">
+            <span> {{ i.name }} {{ i.symbol }} </span>
+            <h3> ${{ i.current_price }} </h3>
+          </div>
         </div>
       </div>
-    </div>
+
+      <% } else { %>
+
+        <div class="container-cripto container">
+          <div class="card" style="width: 18rem;" v-for="i in indi" ::key="i.id">
+            <img v-bind:src="i.image" class="card-img-top" alt="...">
+            <div class="card-body">
+              <span> {{ i.name }} </span>
+              <h3> ${{ i.current_price }} </h3>
+            </div>
+          </div>
+        </div>
+
+        <% } %>
+
   </section>
   <section class="cta">
     <h1 class="m-3">
@@ -86,4 +117,5 @@
     <%- include('../partials/footer'); %>
   </footer>
 </body>
+
 </html>

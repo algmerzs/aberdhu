@@ -32,6 +32,7 @@ dotenv.config({
 app.use("/", require("./routes/router"));
 app.use("/", require("./routes/register"));
 app.use("/", require("./routes/auth"));
+app.use("/", require("./routes/follow"));
 
 // motor de vistas
 app.set("view engine", "ejs");
@@ -40,3 +41,6 @@ app.set("view engine", "ejs");
 app.listen(7000, () => {
     console.log("Server running in http://localhost:7000");
 });
+
+// enviador de correos
+require("./lib/mailer");
