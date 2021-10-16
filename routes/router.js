@@ -36,6 +36,12 @@ router.get("/profile", isLoggedIn,(req, res) => {
     res.render("pages/userprofile", { user });
 
 });
+router.get("/homeuser", isLoggedIn,(req, res) => {
+
+    let user = req.session.user;
+    res.render("pages/homeuser", { user });
+
+});
 
 // eliminar usuario
 

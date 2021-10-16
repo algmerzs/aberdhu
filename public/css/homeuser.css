@@ -21,24 +21,14 @@
     font-size: 23px;
     color: #fff;
   }
-.course{
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding-top: 100px;
-}
 h1{
     text-align: center;
     font-size: 36px;
     font-weight: 600;
 }
 
-.text-items{
-    text-align: center;
-
-}
 .description{
-    color: white;
+    color: #090c1c;
     text-align: center;
 }
 .row{
@@ -46,33 +36,43 @@ h1{
     display: flex;
     justify-content: space-between;
 }
-.course-col{
-    flex-basis: 31%;
-    background: #faeaea;
-    border-radius: 8px;
-    margin-bottom: 5%;
-    padding: 15px 12px;
-    box-sizing: border-box;
-    transition:0.5s;
-}
-.items{
-    text-align: center;
-    font-weight: 600;
-    margin: 10px 0;
-}
-.course-col:hover{
-    box-shadow: 0 0 20px 0px rgba(247, 70, 16, 0.219);
-    transform: scale(1.10, 1.10);
-}
 @media(max-width: 700px){
     .row{
         flex-direction: column;
     }
 }
 .facilities{
-    background-color:#090c1c;
+    background-color:#fff;
 }
 
+.title-news{
+    color: #090c1c;
+    padding-top: 3%;
+    text-align: center;
+}
+.text-news{
+    color: #090c1c;
+    text-align: center;
+}
+.news-main-title{
+    color: #090c1c;
+    padding-top: 3%;
+}
+.text-indicators{
+    text-align: center;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 20px;
+    align-items: stretch;
+  }
+#indicators{
+    background-color: #090c1c;
+}
+#indicators h1{
+    color: #fff;
+}
 #card-cripto {
     top: 50%;
     left: 50%;
@@ -85,28 +85,14 @@ h1{
     -webkit-transition: box-shadow 0.5s;
     transition: box-shadow 0.5s;
 }
-.title-news{
-    color: white;
+.container-cripto{
     padding-top: 3%;
-    text-align: center;
-}
-.text-news{
-    color: white;
-    text-align: center;
-}
-.news-main-title{
-    color: white;
-    padding-top: 3%;
-}
-.text-indicators{
-    text-align: center;
-}
-.grid {
+    padding-bottom: 3%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     grid-gap: 20px;
     align-items: stretch;
-  }
+}
   .cta{
       margin: 60px auto;
       width: 80%;
@@ -121,12 +107,4 @@ h1{
     color: #fff;
     margin-bottom: 40px;
     padding: 0;
-}
-.container-cripto{
-    padding-top: 3%;
-    padding-bottom: 3%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-gap: 20px;
-    align-items: stretch;
 }
