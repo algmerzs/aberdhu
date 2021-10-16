@@ -72,15 +72,38 @@
   </section>
   <section class="pt-4" id="indicators">
     <h1>Criptomonedas</h1>
-    <div class="container-cripto">
-      <div class="card" style="width: 18rem;" v-for="i in indi" ::key="i.id">
-        <img v-bind:src="i.image" class="card-img-top" alt="...">
-        <div class="card-body">
-          <span> {{ i.name }} </span>
-          <h3> ${{ i.current_price }} </h3>
+
+
+    <% if(user) { %>
+
+      <p id="msg">
+
+      </p>
+
+      <div class="container-cripto">
+        <div class="card" style="width: 18rem;" v-for="i in following" ::key="i.id">
+          <img v-bind:src="i.image" class="card-img-top" alt="...">
+          <div class="card-body">
+            <span> {{ i.name }} {{ i.symbol }} </span>
+            <h3> ${{ i.current_price }} </h3>
+          </div>
         </div>
       </div>
-    </div>
+
+      <% } else { %>
+
+        <div class="container-cripto">
+          <div class="card" style="width: 18rem;" v-for="i in indi" ::key="i.id">
+            <img v-bind:src="i.image" class="card-img-top" alt="...">
+            <div class="card-body">
+              <span> {{ i.name }} </span>
+              <h3> ${{ i.current_price }} </h3>
+            </div>
+          </div>
+        </div>
+
+        <% } %>
+
   </section>
   <section class="cta">
     <h1 class="m-3">
