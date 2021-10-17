@@ -40,7 +40,6 @@ router.get("/addIndi/:symbol/:price", isLoggedIn, (req, res) => {
                 } else {
 
                     // Insertar criptomoneda a BD
-
                     connection.query("INSERT INTO indicators SET ?", [newFollow], (err, resu) => {
                         if (err)
                             throw err

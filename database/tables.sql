@@ -6,7 +6,7 @@ CREATE TABLE users(
     password VARCHAR(60) NOT NULL,
     email VARCHAR(80) NOT NULL,
     updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
-    created_at TIMESTAMP NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp
 );
 
 -- tabla de criptomonedas
@@ -16,6 +16,6 @@ CREATE TABLE indicators(
     current_price FLOAT(15,15) NOT NULL,
     indi_username INT(11) NOT NULL,
     updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
-    created_at TIMESTAMP NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp,
     CONSTRAINT fk_indic FOREIGN KEY(indi_username) REFERENCES users(id)
 );

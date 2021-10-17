@@ -54,7 +54,9 @@ const listIndi = new Vue({
                 for (let i = 0; i < indiInJson.length; i++) {
 
                     if (indiInJson[i].symbol == cript[j]) {
+
                         this.following.push(indiInJson[i]);
+
                     }
                 }
 
