@@ -1,5 +1,8 @@
 # aberdhu
-Proyecto media técnica SENA-CEFIT
+## Proyecto media técnica SENA-CEFIT ##
 
-Plataforma financiera <noticias, criptomonedas, registro, login, auth, mysql, nodejs>
+Plataforma financiera <router, registro, login, correo, auth, mysql, nodejs>
 Alertas cambio monedas
+
+
+
