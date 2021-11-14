@@ -4,5 +4,5 @@
 Plataforma financiera <router, registro, login, correo, auth, mysql, nodejs>
 Alertas cambio monedas
 
-
+## REQUIERE INICIAR XAMPP O INCIAR MYSQL
 
