@@ -9,7 +9,6 @@
 npm i
 mysql -h localhost -u <user> -p <password>
 mysql> source <\path\to\>aberdhu\database\tables.sql;
-mysql> exit;
 npm start
 ```
 ## Estructura archivos
@@ -28,3 +27,5 @@ npm start
 - Nodejs
 - Mysql
 - Vue
+- Bootstrap
+- Ejs
