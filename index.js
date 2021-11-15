@@ -10,11 +10,13 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(session({
-    secret: "secret",
-    resave: true,
-    saveUninitialized: true
-}));
+app.use(
+    session({
+        secret: "secret",
+        resave: true,
+        saveUninitialized: true,
+    })
+);
 
 // Archivos estáticos
 app.use("/resources", express.static("public"));
@@ -22,7 +24,7 @@ app.use("/resources", express.static(__dirname + "/public"));
 
 // Variables de entorno
 dotenv.config({
-    path: "./env/.env"
+    path: "./env/.env",
 });
 
 // Rutas
@@ -40,4 +42,4 @@ app.listen(7000, () => {
 });
 
 // Enviar correos
-require("./lib/mailer");
+//require("./lib/mailer");

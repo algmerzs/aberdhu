@@ -1,3 +1,6 @@
+-- crear base de datos
+CREATE DATABASE aberdhu;
+USE aberdhu;
 -- tabla de usuarios
 
 CREATE TABLE users(
