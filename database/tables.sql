@@ -12,9 +12,9 @@ ENGINE=InnoDB;
 
 -- tabla de criptomonedas
 CREATE TABLE indicators(
-    indiId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    indiId BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     symbol VARCHAR(10) NOT NULL,
-    current_price DECIMAL(18,15) NOT NULL,
+    current_price DECIMAL(9,2),
     userId INT NOT NULL,
     updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
     created_at timestamp NOT NULL DEFAULT current_timestamp,

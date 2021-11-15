@@ -85,12 +85,31 @@ router.get("/profile", isLoggedIn, (req, res) => {
 router.get("/delete/:username", isLoggedIn, async (req, res) => {
     const { username } = req.params;
     await connection.query(
-        "DELETE FROM users WHERE username = ?",
+        "SELECT * FROM users WHERE username = ?",
         [username],
         (err, resu) => {
             if (err) {
                 throw err;
             }
+            let userId = resu[0].userId;
+            connection.query(
+                "DELETE FROM indicators WHERE userId = ?",
+                [userId],
+                (err, resu) => {
+                    if (err) {
+                        throw err;
+                    }
+                    connection.query(
+                        "DELETE FROM users WHERE username = ?",
+                        [username],
+                        (err, resu) => {
+                            if (err) {
+                                throw err;
+                            }
+                        }
+                    );
+                }
+            );
         }
     );
     await delete req.session.user;
