@@ -42,4 +42,4 @@ app.listen(7000, () => {
 });
 
 // Enviar correos
-//require("./lib/mailer");
+require("./lib/mailer");
